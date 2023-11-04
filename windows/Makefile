@@ -1,332 +1,579 @@
-ARCH := $(shell ruby -e "puts (\`gcc -dumpmachine\`[/i686/].nil?) ? 'mingw64' : 'mingw'")
-RB_PREFIX := $(shell ruby -e "puts ('$(ARCH)' == 'mingw64') ? 'x64-msvcrt' : 'msvcrt'")
+# Makefile options:
 
-SDL_FLAGS := ${SDL_FLAGS}
-SDL2_IMAGE_FLAGS := ${SDL2_IMAGE_FLAGS}
-SDL2_TTF_FLAGS := ${SDL2_TTF_FLAGS}
-OPENAL_FLAGS := ${OPENAL_FLAGS}
-OPENSSL_FLAGS := $(ARCH) ${OPENSSL_FLAGS}
-RUBY_FLAGS := ${RUBY_FLAGS}
-
-BUILD_PREFIX := ${PWD}/build-$(ARCH)
-LIBDIR := $(BUILD_PREFIX)/lib
-BINDIR := $(BUILD_PREFIX)/bin
-INCLUDEDIR := $(BUILD_PREFIX)/include
-DOWNLOADS := ${PWD}/downloads/$(ARCH)
+# Specifies number of jobs at once for the build targets.
+# "make NPROC=2" to build targets with only 2 processing units (threads).
+# (default: max count of available processing units on current host)
 NPROC := $(shell nproc)
-CFLAGS := -I$(INCLUDEDIR) -O3
-LDFLAGS := -L$(LIBDIR)
+
+# Enables Link-Time Optimization for Ruby to improve performance,
+# but increases compile time. "make LTO=1" to build Ruby with LTO.
+# (default: 0 (false))
+LTO := 0
+
+# Whether build SDL_image with JPEG XL (JXL) decoding support.
+# This also means additional downloading libjxl and their dependencies.
+# "make SDL_IMAGE_JXL=1" to build SDL2_image with JXL support.
+# (default: 1 (true))
+SDL_IMAGE_JXL := 1
+
+
+# ==============================================================================
+
+
+MSYS_ENV    := $(shell echo $(MSYSTEM) | tr '[:upper:]' '[:lower:]')
+RUBY_PREFIX := $(shell ruby msys-detect.rb)
+
+RUBY_ARCH = $(shell $(BINDIR)/ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['arch']")
+
+# OpenSSL configure has its own build targets
+ifneq (,$(findstring x86_64,$(MSYSTEM_CHOST)))
+	OPENSSL_TARGET := mingw64
+else ifneq (,$(findstring aarch64,$(MSYSTEM_CHOST)))
+	OPENSSL_TARGET := mingw64
+else
+	OPENSSL_TARGET := mingw
+endif
+
+# Declare directories
+PREFIX := $(PWD)/build-$(MSYS_ENV)
+DLDIR  := $(PWD)/downloads/$(MSYS_ENV)
+BINDIR := $(PREFIX)/bin
+LIBDIR := $(PREFIX)/lib
+INCDIR := $(PREFIX)/include
+PKGDIR := $(PREFIX)/lib/pkgconfig
+
+# Variables for compiling
 CC      := gcc
-PKG_CONFIG_LIBDIR := $(BUILD_PREFIX)/lib/pkgconfig
-GIT := git
-CLONE := $(GIT) clone -q
-GITHUB := https://github.com
+CFLAGS  := -I$(INCDIR) -O3
+LDFLAGS := -L$(LIBDIR)
 
-CONFIGURE_ENV := \
-	PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR) \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
+GIT := git clone -q -c advice.detachedHead=false --single-branch --no-tags --depth 1
 
-CONFIGURE_ARGS := --prefix="$(BUILD_PREFIX)"
+CONFIGURE_ENV  := PKG_CONFIG_LIBDIR="$(PKGDIR)" CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
+CONFIGURE_ARGS := --prefix="$(PREFIX)" --libdir="$(PREFIX)/lib"
 
 CMAKE_ARGS := \
-	-DCMAKE_INSTALL_PREFIX="$(BUILD_PREFIX)" \
-	-DCMAKE_PREFIX_PATH="$(BUILD_PREFIX)" \
+	-DCMAKE_INSTALL_PREFIX="$(PREFIX)" \
+	-DCMAKE_PREFIX_PATH="$(PREFIX)" \
+	-DCMAKE_C_COMPILER="$(CC)" \
 	-DCMAKE_C_FLAGS="$(CFLAGS)" \
 	-DCMAKE_BUILD_TYPE=Release \
 	-G "MSYS Makefiles"
 
 RUBY_CONFIGURE_ARGS := \
-	--prefix="$(shell cygpath -m ${BUILD_PREFIX})" \
+	--prefix="$(shell cygpath -m $(PREFIX))" \
+	--libdir="$(shell cygpath -m $(PREFIX))/lib" \
+	--enable-shared \
 	--enable-install-static-library \
 	--disable-install-doc \
-	--with-out-ext=openssl,readline,dbm,gdbm,win32ole \
-	--with-static-linked-ext \
+	--disable-install-rdoc \
+	--disable-install-capi \
 	--disable-rubygems \
-	--without-gmp
+	--enable-mkmf-verbose \
+	--without-gmp \
+	--with-zlib-dir="$(shell cygpath -m $(PREFIX))" \
+	--with-libyaml-dir="$(shell cygpath -m $(PREFIX))" \
+	--with-libffi-dir="$(shell cygpath -m $(PREFIX))" \
+	--with-openssl-dir="$(shell cygpath -m $(PREFIX))" \
+	--with-static-linked-ext \
+	--with-out-ext=openssl,readline,pty,syslog,win32,win32ole
 
 CONFIGURE := $(CONFIGURE_ENV) ./configure $(CONFIGURE_ARGS)
 AUTOGEN   := $(CONFIGURE_ENV) ./autogen.sh $(CONFIGURE_ARGS)
-CMAKE     := $(CONFIGURE_ENV) cmake .. $(CMAKE_ARGS)
+CMAKE     := $(CONFIGURE_ENV) cmake -S . -B build $(CMAKE_ARGS)
+
+
+# ==============================================================================
+
+
+all: download build
+
+
+# Download target recipes
+download: \
+	$(DLDIR) \
+	$(DLDIR)/libogg/CMakeLists.txt \
+	$(DLDIR)/libvorbis/CMakeLists.txt \
+	$(DLDIR)/libtheora/autogen.sh \
+	$(DLDIR)/zlib/win32/Makefile.gcc \
+	$(DLDIR)/physfs/CMakeLists.txt \
+	$(DLDIR)/uchardet/CMakeLists.txt \
+	$(DLDIR)/libpng/CMakeLists.txt \
+	$(DLDIR)/libjpeg/CMakeLists.txt \
+	$(DLDIR)/pixman/autogen.sh \
+	$(DLDIR)/harfbuzz/CMakeLists.txt \
+	$(DLDIR)/freetype/CMakeLists.txt \
+	$(DLDIR)/sdl2/CMakeLists.txt \
+	$(DLDIR)/sdl2_image/CMakeLists.txt \
+	$(DLDIR)/sdl2_ttf/CMakeLists.txt \
+	$(DLDIR)/sdl2_sound/CMakeLists.txt \
+	$(DLDIR)/openal/CMakeLists.txt \
+	$(DLDIR)/fluidsynth/CMakeLists.txt \
+	$(DLDIR)/libyaml/CMakeLists.txt \
+	$(DLDIR)/libffi/configure.ac \
+	$(DLDIR)/openssl/Configure \
+	$(DLDIR)/ruby/configure.ac
+
+# Build target recipes
+build: \
+	libogg \
+	libvorbis \
+	libtheora \
+	zlib \
+	physfs \
+	uchardet \
+	libpng \
+	libjpeg \
+	pixman \
+	harfbuzz \
+	freetype \
+	harfbuzz-ft \
+	sdl2 \
+	sdl2_image \
+	sdl2_ttf \
+	sdl2_sound \
+	openal \
+	fluidsynth \
+	openssl \
+	ruby \
+	ruby-ext-openssl
+
+
+init: $(DLDIR) $(BINDIR) $(LIBDIR) $(INCDIR)
+
+$(DLDIR):
+	@mkdir -p $(DLDIR)
+
+$(BINDIR):
+	@mkdir -p $(BINDIR)
+
+$(LIBDIR):
+	@mkdir -p $(LIBDIR)
+
+$(INCDIR):
+	@mkdir -p $(INCDIR)
+
+
+clean: clean-download clean-prefix
+
+clean-download:
+	@printf "\e[91m=>\e[0m \e[35mCleaning download folder...\e[0m\n"
+	@rm -rf $(DLDIR)
+
+clean-prefix:
+	@printf "\e[91m=>\e[0m \e[35mCleaning prefix folder...\e[0m\n"
+	@rm -rf $(PREFIX)
+
+
+.PHONY: \
+	all download build init clean clean-download clean-prefix \
+	libogg libvorbis libtheora zlib physfs uchardet libpng libjpeg \
+	pixman harfbuzz freetype harfbuzz-ft sdl2 sdl2_image sdl2_ttf sdl2_sound \
+	openal fluidsynth libyaml libffi openssl ruby ruby-ext-openssl
+
+
+# ================================= Xiph codecs ================================
+
+# ------------------------------------- Ogg ------------------------------------
+libogg: init $(LIBDIR)/libogg.a
 
-default: everything
+$(LIBDIR)/libogg.a: $(DLDIR)/libogg/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libogg...\e[0m\n"
+	@cd $(DLDIR)/libogg/build; make -j$(NPROC); make install
 
-# Theora
-libtheora: init_dirs libvorbis libogg $(LIBDIR)/libtheora.a
+$(DLDIR)/libogg/build/Makefile: $(DLDIR)/libogg/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libogg...\e[0m\n"
+	cd $(DLDIR)/libogg; $(CMAKE) -DBUILD_SHARED_LIBS=NO -DINSTALL_DOCS=NO -DBUILD_TESTING=NO
 
-$(LIBDIR)/libtheora.a: $(LIBDIR)/libogg.a $(DOWNLOADS)/theora/Makefile
-	cd $(DOWNLOADS)/theora; \
-	make -j$(NPROC); make install
+$(DLDIR)/libogg/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libogg 1.3.5...\e[0m\n"
+	@$(GIT) -b v1.3.5 https://github.com/xiph/ogg $(DLDIR)/libogg
 
-$(DOWNLOADS)/theora/Makefile: $(DOWNLOADS)/theora/configure
-	cd $(DOWNLOADS)/theora; \
-	$(CONFIGURE) --with-ogg=$(BUILD_PREFIX) --enable-shared=false --enable-static=true --disable-examples
+# ----------------------------------- Vorbis -----------------------------------
+libvorbis: init libogg $(LIBDIR)/libvorbis.a
 
-$(DOWNLOADS)/theora/configure: $(DOWNLOADS)/theora/autogen.sh
-	cd $(DOWNLOADS)/theora; \
-	./autogen.sh
+$(LIBDIR)/libvorbis.a: $(DLDIR)/libvorbis/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libvorbis...\e[0m\n"
+	@cd $(DLDIR)/libvorbis/build; make -j$(NPROC); make install
 
-$(DOWNLOADS)/theora/autogen.sh:
-	$(CLONE) $(GITHUB)/xiph/theora $(DOWNLOADS)/theora
+$(DLDIR)/libvorbis/build/Makefile: $(DLDIR)/libvorbis/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libvorbis...\e[0m\n"
+	cd $(DLDIR)/libvorbis; $(CMAKE) -DBUILD_SHARED_LIBS=NO
 
-# Vorbis
-libvorbis: init_dirs libogg $(LIBDIR)/libvorbis.a
+$(DLDIR)/libvorbis/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libvorbis 1.3.7...\e[0m\n"
+	@$(GIT) -b v1.3.7 https://github.com/xiph/vorbis $(DLDIR)/libvorbis
 
-$(LIBDIR)/libvorbis.a: $(LIBDIR)/libogg.a $(DOWNLOADS)/vorbis/Makefile
-	cd $(DOWNLOADS)/vorbis; \
-	make -j$(NPROC); make install
+# ----------------------------------- Theora -----------------------------------
+libtheora: init libogg libvorbis $(LIBDIR)/libtheora.a
 
-$(DOWNLOADS)/vorbis/Makefile: $(DOWNLOADS)/vorbis/configure
-	cd $(DOWNLOADS)/vorbis; \
-	$(CONFIGURE) --with-ogg=$(BUILD_PREFIX) --enable-shared=false --enable-static=true
+$(LIBDIR)/libtheora.a: $(DLDIR)/libtheora/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libtheora...\e[0m\n"
+	@cd $(DLDIR)/libtheora; make -j$(NPROC); make install
 
-$(DOWNLOADS)/vorbis/configure: $(DOWNLOADS)/vorbis/autogen.sh
-	cd $(DOWNLOADS)/vorbis; \
-	./autogen.sh
+$(DLDIR)/libtheora/Makefile: $(DLDIR)/libtheora/configure
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libtheora...\e[0m\n"
+	cd $(DLDIR)/libtheora; \
+	$(CONFIGURE) --enable-static=true --enable-shared=false \
+	--disable-doc --disable-spec --disable-examples --disable-encode
 
-$(DOWNLOADS)/vorbis/autogen.sh:
-	$(CLONE) $(GITHUB)/mkxp-z/vorbis $(DOWNLOADS)/vorbis
+$(DLDIR)/libtheora/configure: $(DLDIR)/libtheora/autogen.sh
+	cd $(DLDIR)/libtheora; ./autogen.sh
 
+$(DLDIR)/libtheora/autogen.sh:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libtheora 1.2.0alpha1+git...\e[0m\n"
+	@$(GIT) -b master https://github.com/xiph/theora $(DLDIR)/libtheora
 
-# Ogg, dependency of Vorbis
-libogg: init_dirs $(LIBDIR)/libogg.a
 
-$(LIBDIR)/libogg.a: $(DOWNLOADS)/ogg/Makefile
-	cd $(DOWNLOADS)/ogg; \
-	make -j$(NPROC); make install
+# =============================== Misc libraries ===============================
 
-$(DOWNLOADS)/ogg/Makefile: $(DOWNLOADS)/ogg/configure
-	cd $(DOWNLOADS)/ogg; \
-	$(CONFIGURE) --enable-static=true --enable-shared=false
+# ------------------------------------ Zlib ------------------------------------
+zlib: init $(LIBDIR)/libz.a
 
-$(DOWNLOADS)/ogg/configure: $(DOWNLOADS)/ogg/autogen.sh
-	cd $(DOWNLOADS)/ogg; ./autogen.sh
+$(LIBDIR)/libz.a: $(DLDIR)/zlib/win32/Makefile.gcc
+	@printf "\e[94m=>\e[0m \e[36mBuilding Zlib...\e[0m\n"
+	cd $(DLDIR)/zlib; export $(CONFIGURE_ENV); export CFLAGS="$$CFLAGS -fPIC"; \
+	export INCLUDE_PATH="$(INCDIR)"; \
+	export LIBRARY_PATH="$(LIBDIR)"; \
+	export BINARY_PATH="$(BINDIR)"; \
+	make -f./win32/Makefile.gcc -j$(NPROC); make -f./win32/Makefile.gcc install
 
-$(DOWNLOADS)/ogg/autogen.sh:
-	$(CLONE) $(GITHUB)/mkxp-z/ogg $(DOWNLOADS)/ogg
+$(DLDIR)/zlib/win32/Makefile.gcc:
+	@printf "\e[94m=>\e[0m \e[36mDownloading Zlib 1.3...\e[0m\n"
+	@$(GIT) -b v1.3 https://github.com/madler/zlib $(DLDIR)/zlib
 
-# Pixman
-pixman: init_dirs libpng $(LIBDIR)/libpixman-1.a
+# ----------------------------------- PhysFS -----------------------------------
+physfs: init $(LIBDIR)/libphysfs.a
 
-$(LIBDIR)/libpixman-1.a: $(DOWNLOADS)/pixman/Makefile
-	cd $(DOWNLOADS)/pixman
-	make -C $(DOWNLOADS)/pixman -j$(NPROC)
-	make -C $(DOWNLOADS)/pixman install
+$(LIBDIR)/libphysfs.a: $(DLDIR)/physfs/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding PhysFS...\e[0m\n"
+	@cd $(DLDIR)/physfs/build; make -j$(NPROC); make install
 
-$(DOWNLOADS)/pixman/Makefile: $(DOWNLOADS)/pixman/autogen.sh
-	cd $(DOWNLOADS)/pixman; \
-	$(AUTOGEN) --enable-static=yes --enable-shared=no
+$(DLDIR)/physfs/build/Makefile: $(DLDIR)/physfs/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring PhysFS...\e[0m\n"
+	cd $(DLDIR)/physfs; $(CMAKE) \
+	-DPHYSFS_BUILD_STATIC=YES -DPHYSFS_BUILD_SHARED=NO -DPHYSFS_BUILD_DOCS=NO
 
-$(DOWNLOADS)/pixman/autogen.sh:
-	$(CLONE) $(GITHUB)/mkxp-z/pixman $(DOWNLOADS)/pixman
+$(DLDIR)/physfs/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading PhysFS 3.2.0...\e[0m\n"
+	@$(GIT) -b release-3.2.0 https://github.com/icculus/physfs $(DLDIR)/physfs
 
+# ---------------------------------- uchardet ----------------------------------
+uchardet: init $(LIBDIR)/libuchardet.a
 
-# PhysFS
+$(LIBDIR)/libuchardet.a: $(DLDIR)/uchardet/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding uchardet...\e[0m\n"
+	@cd $(DLDIR)/uchardet/build; make -j$(NPROC); make install
 
-physfs: init_dirs $(LIBDIR)/libphysfs.a
+$(DLDIR)/uchardet/build/Makefile: $(DLDIR)/uchardet/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring uchardet...\e[0m\n"
+	cd $(DLDIR)/uchardet; $(CMAKE) \
+	-DBUILD_STATIC=YES -DBUILD_SHARED_LIBS=NO -DBUILD_BINARY=NO
 
-$(LIBDIR)/libphysfs.a: $(DOWNLOADS)/physfs/cmakebuild/Makefile
-	cd $(DOWNLOADS)/physfs/cmakebuild; \
-	make -j$(NPROC); make install
+$(DLDIR)/uchardet/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading uchardet 0.0.8...\e[0m\n"
+	@$(GIT) -b v0.0.8 https://gitlab.freedesktop.org/uchardet/uchardet.git $(DLDIR)/uchardet
 
-$(DOWNLOADS)/physfs/cmakebuild/Makefile: $(DOWNLOADS)/physfs/CMakeLists.txt
-	cd $(DOWNLOADS)/physfs; \
-	mkdir cmakebuild; cd cmakebuild; \
-	$(CMAKE) -DPHYSFS_BUILD_STATIC=true -DPHYSFS_BUILD_SHARED=false
 
-$(DOWNLOADS)/physfs/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/physfs -b release-3.2.0 $(DOWNLOADS)/physfs
+# =============================== Image libraries ==============================
 
-# libpng
-libpng: init_dirs $(LIBDIR)/libpng.a
+# ----------------------------------- libpng -----------------------------------
+libpng: init zlib $(LIBDIR)/libpng.a
 
-$(LIBDIR)/libpng.a: $(DOWNLOADS)/libpng/Makefile
-	cd $(DOWNLOADS)/libpng; \
-	make -j$(NPROC); make install
+$(LIBDIR)/libpng.a: $(DLDIR)/libpng/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libpng...\e[0m\n"
+	@cd $(DLDIR)/libpng/build; make -j$(NPROC); make install
 
-$(DOWNLOADS)/libpng/Makefile: $(DOWNLOADS)/libpng/configure
-	cd $(DOWNLOADS)/libpng; \
-	$(CONFIGURE) \
-	--enable-shared=no --enable-static=yes
-
-$(DOWNLOADS)/libpng/configure:
-	$(CLONE) $(GITHUB)/mkxp-z/libpng $(DOWNLOADS)/libpng
+$(DLDIR)/libpng/build/Makefile: $(DLDIR)/libpng/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libpng...\e[0m\n"
+	cd $(DLDIR)/libpng; $(CMAKE) \
+	-DPNG_STATIC=YES -DPNG_SHARED=NO -DPNG_EXECUTABLES=NO -DPNG_TESTS=NO
 
-# uchardet
-uchardet: init_dirs $(LIBDIR)/libuchardet.a
+$(DLDIR)/libpng/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libpng 1.6.40...\e[0m\n"
+	@$(GIT) -b v1.6.40 https://github.com/glennrp/libpng $(DLDIR)/libpng
 
-$(LIBDIR)/libuchardet.a: $(DOWNLOADS)/uchardet/cmakebuild/Makefile
-	cd $(DOWNLOADS)/uchardet/cmakebuild; \
-	make -j$(NPROC); make install
+# ----------------------------------- libjpeg ----------------------------------
+libjpeg: init $(LIBDIR)/libjpeg.a
 
-$(DOWNLOADS)/uchardet/cmakebuild/Makefile: $(DOWNLOADS)/uchardet/CMakeLists.txt
-	cd $(DOWNLOADS)/uchardet; \
-	mkdir cmakebuild; cd cmakebuild; \
-	$(CMAKE) -DBUILD_SHARED_LIBS=no
+$(LIBDIR)/libjpeg.a: $(DLDIR)/libjpeg/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libjpeg-turbo...\e[0m\n"
+	@cd $(DLDIR)/libjpeg/build; make -j$(NPROC); make install
 
-$(DOWNLOADS)/uchardet/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/uchardet $(DOWNLOADS)/uchardet
+$(DLDIR)/libjpeg/build/Makefile: $(DLDIR)/libjpeg/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libjpeg-turbo...\e[0m\n"
+	cd $(DLDIR)/libjpeg; $(CMAKE) -DENABLE_STATIC=YES -DENABLE_SHARED=NO \
+	-DWITH_SIMD=NO
 
-# SDL2
-sdl2: init_dirs $(LIBDIR)/libSDL2.a
+$(DLDIR)/libjpeg/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libjpeg-turbo 3.0.1...\e[0m\n"
+	@$(GIT) -b 3.0.1 https://github.com/libjpeg-turbo/libjpeg-turbo $(DLDIR)/libjpeg
 
-$(LIBDIR)/libSDL2.a: $(DOWNLOADS)/sdl2/cmakebuild/Makefile
-	cd $(DOWNLOADS)/sdl2/cmakebuild; \
-	make -j$(NPROC); make install
+# ----------------------------------- Pixman -----------------------------------
+pixman: init libpng $(LIBDIR)/libpixman-1.a
 
-$(DOWNLOADS)/sdl2/cmakebuild/Makefile: $(DOWNLOADS)/sdl2/CMakeLists.txt
-	cd $(DOWNLOADS)/sdl2; \
-	mkdir cmakebuild; cd cmakebuild; \
-	$(CMAKE) -DBUILD_SHARED_LIBS=no
+$(LIBDIR)/libpixman-1.a: $(DLDIR)/pixman/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding Pixman...\e[0m\n"
+	@cd $(DLDIR)/pixman; make -j$(NPROC); make install
 
-$(DOWNLOADS)/sdl2/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/SDL $(DOWNLOADS)/sdl2 -b mkxp-z-2.28.1
+$(DLDIR)/pixman/Makefile: $(DLDIR)/pixman/autogen.sh
+	@printf "\e[94m=>\e[0m \e[36mConfiguring Pixman...\e[0m\n"
+	cd $(DLDIR)/pixman; $(AUTOGEN) --enable-static=yes --enable-shared=no \
+	--disable-gtk --disable-libpng
 
-# SDL_image
-sdl2image: init_dirs sdl2 $(LIBDIR)/libSDL2_image.a
+$(DLDIR)/pixman/autogen.sh:
+	@printf "\e[94m=>\e[0m \e[36mDownloading Pixman 0.42.2...\e[0m\n"
+	@$(GIT) -b pixman-0.42.2 https://gitlab.freedesktop.org/pixman/pixman.git $(DLDIR)/pixman
 
-$(LIBDIR)/libSDL2_image.a: $(DOWNLOADS)/sdl2_image/cmakebuild/Makefile
-	cd $(DOWNLOADS)/sdl2_image/cmakebuild; \
-	make -j$(NPROC); make install
 
-$(DOWNLOADS)/sdl2_image/cmakebuild/Makefile: $(DOWNLOADS)/sdl2_image/CMakeLists.txt
-	cd $(DOWNLOADS)/sdl2_image; mkdir -p cmakebuild; cd cmakebuild; \
-	$(CMAKE) \
-	-DBUILD_SHARED_LIBS=no \
-	-DSDL2IMAGE_JPG_SAVE=yes \
-	-DSDL2IMAGE_PNG_SAVE=yes \
-	-DSDL2IMAGE_PNG_SHARED=no \
-	-DSDL2IMAGE_JPG_SHARED=no \
-	-DSDL2IMAGE_JXL=yes \
-	-DSDL2IMAGE_JXL_SHARED=no \
-	-DSDL2IMAGE_VENDORED=yes
+# ================================ Text shaping ================================
 
-$(DOWNLOADS)/sdl2_image/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/SDL_image $(DOWNLOADS)/sdl2_image -b mkxp-z; \
-	cd $(DOWNLOADS)/sdl2_image; \
-	./external/download.sh
+# ---------------------------------- HarfBuzz ----------------------------------
+harfbuzz: init $(LIBDIR)/libharfbuzz.a
 
-# SDL_sound
-sdlsound: init_dirs sdl2 libogg libvorbis $(LIBDIR)/libSDL2_sound.a
+$(LIBDIR)/libharfbuzz.a: $(DLDIR)/harfbuzz/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding HarfBuzz...\e[0m\n"
+	@cd $(DLDIR)/harfbuzz/build; make -j$(NPROC); make install
+	@touch $(LIBDIR)/libharfbuzz.a
 
-$(LIBDIR)/libSDL2_sound.a: $(DOWNLOADS)/sdl_sound/cmakebuild/Makefile
-	cd $(DOWNLOADS)/sdl_sound/cmakebuild; \
-	make -j$(NPROC); make install
+$(DLDIR)/harfbuzz/build/Makefile: $(DLDIR)/harfbuzz/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring HarfBuzz...\e[0m\n"
+	cd $(DLDIR)/harfbuzz; $(CMAKE) -DHB_BUILD_SUBSET=NO
 
-$(DOWNLOADS)/sdl_sound/cmakebuild/Makefile: $(DOWNLOADS)/sdl_sound/CMakeLists.txt
-	cd $(DOWNLOADS)/sdl_sound; mkdir -p cmakebuild; cd cmakebuild; \
-	$(CMAKE) \
-	-DSDLSOUND_BUILD_SHARED=false \
-	-DSDLSOUND_BUILD_TEST=false
+$(DLDIR)/harfbuzz/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading HarfBuzz 8.2.2...\e[0m\n"
+	@$(GIT) -b 8.2.2 https://github.com/harfbuzz/harfbuzz $(DLDIR)/harfbuzz
 
-$(DOWNLOADS)/sdl_sound/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/SDL_sound $(DOWNLOADS)/sdl_sound -b git
+# ---------------------------------- FreeType ----------------------------------
+freetype: init zlib libpng harfbuzz $(LIBDIR)/libfreetype.a
 
-# SDL2 (ttf)
-sdl2ttf: init_dirs sdl2 freetype $(LIBDIR)/libSDL2_ttf.a
+$(LIBDIR)/libfreetype.a: $(DLDIR)/freetype/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding FreeType...\e[0m\n"
+	@cd $(DLDIR)/freetype/build; make -j$(NPROC); make install
 
-$(LIBDIR)/libSDL2_ttf.a: $(DOWNLOADS)/sdl2_ttf/Makefile
-	cd $(DOWNLOADS)/sdl2_ttf; \
-	make -j$(NPROC); make install
+$(DLDIR)/freetype/build/Makefile: $(DLDIR)/freetype/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring FreeType...\e[0m\n"
+	cd $(DLDIR)/freetype; $(CMAKE) \
+	-DFT_REQUIRE_HARFBUZZ=YES -DFT_DISABLE_BZIP2=YES -DFT_DISABLE_BROTLI=YES
 
-$(DOWNLOADS)/sdl2_ttf/Makefile: $(DOWNLOADS)/sdl2_ttf/configure
-	cd $(DOWNLOADS)/sdl2_ttf; \
-	$(CONFIGURE) --enable-static=true --enable-shared=false $(SDL2_TTF_FLAGS)
+$(DLDIR)/freetype/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading FreeType 2.13.2...\e[0m\n"
+	@$(GIT) -b VER-2-13-2 https://gitlab.freedesktop.org/freetype/freetype.git $(DLDIR)/freetype
 
-$(DOWNLOADS)/sdl2_ttf/configure: $(DOWNLOADS)/sdl2_ttf/autogen.sh
-	cd $(DOWNLOADS)/sdl2_ttf; ./autogen.sh
+# ------------------------- HarfBuzz + FreeType interop ------------------------
 
-$(DOWNLOADS)/sdl2_ttf/autogen.sh:
-	$(CLONE) $(GITHUB)/mkxp-z/SDL_ttf $(DOWNLOADS)/sdl2_ttf -b mkxp-z
+harfbuzz-ft: init harfbuzz freetype $(DLDIR)/harfbuzz/build/.ft-interop
 
-# Freetype (dependency of SDL2_ttf)
-freetype: init_dirs $(LIBDIR)/libfreetype.a
+$(DLDIR)/harfbuzz/build/.ft-interop:
+	cd $(DLDIR)/harfbuzz; $(CMAKE) -DHB_HAVE_FREETYPE=YES
+	cd $(DLDIR)/harfbuzz/build; make -j$(NPROC); make install
+	touch $(DLDIR)/harfbuzz/build/.ft-interop
+	touch $(LIBDIR)/libharfbuzz.a
 
-$(LIBDIR)/libfreetype.a: $(DOWNLOADS)/freetype/Makefile
-	cd $(DOWNLOADS)/freetype; \
-	make -j$(NPROC); make install
 
-$(DOWNLOADS)/freetype/Makefile: $(DOWNLOADS)/freetype/configure
-	cd $(DOWNLOADS)/freetype; \
-	$(CONFIGURE) --enable-static=true --enable-shared=false
+# ============================== SDL2 and modules ==============================
 
-$(DOWNLOADS)/freetype/configure: $(DOWNLOADS)/freetype/autogen.sh
-	cd $(DOWNLOADS)/freetype; ./autogen.sh
+# ------------------------------------ SDL2 ------------------------------------
+sdl2: init $(LIBDIR)/libSDL2.a
 
-$(DOWNLOADS)/freetype/autogen.sh:
-	$(CLONE) $(GITHUB)/mkxp-z/freetype2 $(DOWNLOADS)/freetype
+$(LIBDIR)/libSDL2.a: $(DLDIR)/sdl2/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding SDL2...\e[0m\n"
+	@cd $(DLDIR)/sdl2/build; make -j$(NPROC); make install
 
-# OpenAL
-openal: init_dirs libogg $(LIBDIR)/libOpenAL32.a
+$(DLDIR)/sdl2/build/Makefile: $(DLDIR)/sdl2/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring SDL2...\e[0m\n"
+	cd $(DLDIR)/sdl2; $(CMAKE) -DSDL_STATIC=YES -DSDL_SHARED=NO
 
-$(LIBDIR)/libOpenAL32.a: $(DOWNLOADS)/openal/cmakebuild/Makefile
-	cd $(DOWNLOADS)/openal/cmakebuild; \
-	make -j$(NPROC); make install
+$(DLDIR)/sdl2/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2 2.28.5...\e[0m\n"
+	@$(GIT) -b release-2.28.5 https://github.com/libsdl-org/SDL $(DLDIR)/sdl2
 
-$(DOWNLOADS)/openal/cmakebuild/Makefile: $(DOWNLOADS)/openal/CMakeLists.txt
-	cd $(DOWNLOADS)/openal; mkdir cmakebuild; cd cmakebuild; \
-	$(CMAKE) -DLIBTYPE=STATIC -DALSOFT_EXAMPLES=no -DALSOFT_UTILS=no $(OPENAL_FLAGS)
+# --------------------------------- SDL2_image ---------------------------------
+sdl2_image: init sdl2 libpng libjpeg $(LIBDIR)/libSDL2_image.a
 
-$(DOWNLOADS)/openal/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/openal-soft $(DOWNLOADS)/openal
+$(LIBDIR)/libSDL2_image.a: $(DLDIR)/sdl2_image/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding SDL2_image...\e[0m\n"
+	@cd $(DLDIR)/sdl2_image/build; make -j$(NPROC); make install
 
-# FluidSynth
-fluidsynth: init_dirs $(LIBDIR)/libfluidsynth.a
+$(DLDIR)/sdl2_image/build/Makefile: $(DLDIR)/sdl2_image/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring SDL2_image...\e[0m\n"
+	cd $(DLDIR)/sdl2_image; $(CMAKE) -DBUILD_SHARED_LIBS=NO \
+	-DSDL2IMAGE_DEPS_SHARED=NO -DSDL2IMAGE_VENDORED=NO -DSDL2IMAGE_SAMPLES=NO
+ifeq ($(SDL_IMAGE_JXL),1)
+	cd $(DLDIR)/sdl2_image/build; \
+	cmake .. -DSDL2IMAGE_VENDORED=YES -DSDL2IMAGE_JXL=YES -DJPEGXL_ENABLE_OPENEXR=NO
+endif
 
-$(LIBDIR)/libfluidsynth.a: $(DOWNLOADS)/fluidsynth/cmakebuild/Makefile
-	cd $(DOWNLOADS)/fluidsynth/cmakebuild; \
-	make -j$(NPROC); make install
+$(DLDIR)/sdl2_image/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2_image 2.6.3...\e[0m\n"
+	@$(GIT) -b release-2.6.3 https://github.com/libsdl-org/SDL_image $(DLDIR)/sdl2_image
+ifeq ($(SDL_IMAGE_JXL),1)
+	@printf "\e[94m=>\e[0m \e[36mDownloading libjxl for SDL2_image...\e[0m\n"
+	@cd $(DLDIR)/sdl2_image; git submodule update -q --init --recursive external/libjxl
+endif
 
-$(DOWNLOADS)/fluidsynth/cmakebuild/Makefile: $(DOWNLOADS)/fluidsynth/CMakeLists.txt
-	cd $(DOWNLOADS)/fluidsynth; mkdir cmakebuild; cd cmakebuild; \
-	$(CMAKE) -DBUILD_SHARED_LIBS=no -Denable-sdl2=no -Denable-readline=no
+# ---------------------------------- SDL2_ttf ----------------------------------
+sdl2_ttf: init sdl2 freetype harfbuzz $(LIBDIR)/libSDL2_ttf.a
 
-$(DOWNLOADS)/fluidsynth/CMakeLists.txt:
-	$(CLONE) $(GITHUB)/mkxp-z/fluidsynth-sans-glib $(DOWNLOADS)/fluidsynth
+$(LIBDIR)/libSDL2_ttf.a: $(DLDIR)/sdl2_ttf/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding SDL2_ttf...\e[0m\n"
+	@cd $(DLDIR)/sdl2_ttf/build; make -j$(NPROC); make install
 
-# OpenSSL
-openssl: init_dirs $(LIBDIR)/libssl.a
-$(LIBDIR)/libssl.a: $(DOWNLOADS)/openssl/Makefile
-	cd $(DOWNLOADS)/openssl; \
-	make -j$(NPROC); make install_sw
+$(DLDIR)/sdl2_ttf/build/Makefile: $(DLDIR)/sdl2_ttf/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring SDL2_ttf...\e[0m\n"
+	cd $(DLDIR)/sdl2_ttf; $(CMAKE) \
+	-DBUILD_SHARED_LIBS=NO -DSDL2TTF_SAMPLES=NO -DSDL2TTF_HARFBUZZ=YES
 
-$(DOWNLOADS)/openssl/Makefile: $(DOWNLOADS)/openssl/Configure
-	cd $(DOWNLOADS)/openssl; \
-	./Configure $(OPENSSL_FLAGS) \
-	no-shared \
-	--prefix="$(BUILD_PREFIX)" \
-	--openssldir="$(BUILD_PREFIX)"
+$(DLDIR)/sdl2_ttf/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2_ttf 2.20.2...\e[0m\n"
+	@$(GIT) -b release-2.20.2 https://github.com/libsdl-org/SDL_ttf $(DLDIR)/sdl2_ttf
 
-$(DOWNLOADS)/openssl/Configure:
-	$(CLONE) $(GITHUB)/openssl/openssl $(DOWNLOADS)/openssl --single-branch --branch OpenSSL_1_1_1i --depth 1
+# --------------------------------- SDL2_sound ---------------------------------
+sdl2_sound: init sdl2 libogg libvorbis $(LIBDIR)/libSDL2_sound.a
 
-# Standard ruby
-ruby: init_dirs openssl $(BINDIR)/$(RB_PREFIX)-ruby310.dll
+$(LIBDIR)/libSDL2_sound.a: $(DLDIR)/sdl2_sound/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding SDL2_sound...\e[0m\n"
+	@cd $(DLDIR)/sdl2_sound/build; make -j$(NPROC); make install
 
-$(BINDIR)/$(RB_PREFIX)-ruby310.dll: $(DOWNLOADS)/ruby/Makefile
-	cd $(DOWNLOADS)/ruby; \
-	make -j$(NPROC); make install
+$(DLDIR)/sdl2_sound/build/Makefile: $(DLDIR)/sdl2_sound/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring SDL2_sound...\e[0m\n"
+	cd $(DLDIR)/sdl2_sound; $(CMAKE) -DSDLSOUND_BUILD_STATIC=YES \
+	-DSDLSOUND_BUILD_SHARED=NO -DSDLSOUND_BUILD_TEST=NO
 
-$(DOWNLOADS)/ruby/Makefile: $(DOWNLOADS)/ruby/configure
-	cd $(DOWNLOADS)/ruby; \
+$(DLDIR)/sdl2_sound/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2_sound 2.0.2...\e[0m\n"
+	@$(GIT) -b v2.0.2 https://github.com/icculus/SDL_sound $(DLDIR)/sdl2_sound
+
+
+# =============================== Audio backends ===============================
+
+# ----------------------------------- OpenAL -----------------------------------
+openal: init libogg $(LIBDIR)/libOpenAL32.a
+
+$(LIBDIR)/libOpenAL32.a: $(DLDIR)/openal/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding OpenAL...\e[0m\n"
+	@cd $(DLDIR)/openal/build; make -j$(NPROC); make install
+
+$(DLDIR)/openal/build/Makefile: $(DLDIR)/openal/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring OpenAL...\e[0m\n"
+	cd $(DLDIR)/openal; $(CMAKE) -DLIBTYPE=STATIC -DALSOFT_UTILS=NO \
+	-DALSOFT_EXAMPLES=NO -DALSOFT_EMBED_HRTF_DATA=YES
+
+$(DLDIR)/openal/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading OpenAL 1.23.1...\e[0m\n"
+	@$(GIT) -b 1.23.1 https://github.com/kcat/openal-soft $(DLDIR)/openal
+
+# ---------------------------- FluidSynth (no glib) ----------------------------
+fluidsynth: init $(LIBDIR)/libfluidsynth.a
+
+$(LIBDIR)/libfluidsynth.a: $(DLDIR)/fluidsynth/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding FluidSynth...\e[0m\n"
+	@cd $(DLDIR)/fluidsynth/build; make -j$(NPROC); make install
+
+$(DLDIR)/fluidsynth/build/Makefile: $(DLDIR)/fluidsynth/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring FluidSynth...\e[0m\n"
+	cd $(DLDIR)/fluidsynth; $(CMAKE) -DBUILD_SHARED_LIBS=NO -DLIB_SUFFIX="" \
+	-Denable-sdl2=NO -Denable-readline=NO
+
+$(DLDIR)/fluidsynth/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading FluidSynth 2.1.5 (no glib)...\e[0m\n"
+	@$(GIT) https://github.com/mkxp-z/fluidsynth-sans-glib $(DLDIR)/fluidsynth
+
+
+# ============================== Ruby 3.1 and etc. =============================
+
+# ----------------------------- libyaml (for Ruby) -----------------------------
+
+libyaml: init $(LIBDIR)/libyaml.a
+
+$(LIBDIR)/libyaml.a: $(DLDIR)/libyaml/build/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libyaml...\e[0m\n"
+	@cd $(DLDIR)/libyaml/build; make -j$(NPROC); make install
+
+$(DLDIR)/libyaml/build/Makefile: $(DLDIR)/libyaml/CMakeLists.txt
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libyaml...\e[0m\n"
+	cd $(DLDIR)/libyaml; $(CMAKE) -DBUILD_SHARED_LIBS=NO -DBUILD_TESTING=NO \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=YES -DINSTALL_CMAKE_DIR="lib/cmake/yaml"
+
+$(DLDIR)/libyaml/CMakeLists.txt:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libyaml 0.2.5...\e[0m\n"
+	@$(GIT) -b 0.2.5 https://github.com/yaml/libyaml $(DLDIR)/libyaml
+
+# --------------------------- libffi (for Fiddle ext) --------------------------
+libffi: init $(LIBDIR)/libffi.a
+
+$(LIBDIR)/libffi.a: $(DLDIR)/libffi/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding libffi...\e[0m\n"
+	@cd $(DLDIR)/libffi; make -j$(NPROC); make install
+
+$(DLDIR)/libffi/Makefile: $(DLDIR)/libffi/configure
+	@printf "\e[94m=>\e[0m \e[36mConfiguring libffi...\e[0m\n"
+	cd $(DLDIR)/libffi; \
+	export $(CONFIGURE_ENV); export CFLAGS="-fPIC $$CFLAGS"; \
+	./configure $(CONFIGURE_ARGS) --disable-shared --enable-static --disable-docs
+
+$(DLDIR)/libffi/configure: $(DLDIR)/libffi/configure.ac
+	cd $(DLDIR)/libffi; autoreconf -i
+
+$(DLDIR)/libffi/configure.ac:
+	@printf "\e[94m=>\e[0m \e[36mDownloading libffi 3.4.4...\e[0m\n"
+	@$(GIT) -b v3.4.4 https://github.com/libffi/libffi $(DLDIR)/libffi
+
+# --------------------------------- OpenSSL 3.0 --------------------------------
+openssl: init $(LIBDIR)/libssl.a
+
+$(LIBDIR)/libssl.a: $(DLDIR)/openssl/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding OpenSSL...\e[0m\n"
+	@cd $(DLDIR)/openssl; make -j$(NPROC); make install_sw
+
+$(DLDIR)/openssl/Makefile: $(DLDIR)/openssl/Configure
+	@printf "\e[94m=>\e[0m \e[36mConfiguring OpenSSL...\e[0m\n"
+	cd $(DLDIR)/openssl; ./Configure $(OPENSSL_TARGET) \
+	no-shared no-makedepend no-tests \
+	--prefix="$(PREFIX)" --libdir="lib" --openssldir="$(PREFIX)/ssl"
+
+$(DLDIR)/openssl/Configure:
+	@printf "\e[94m=>\e[0m \e[36mDownloading OpenSSL 3.0.12...\e[0m\n"
+	@$(GIT) -b openssl-3.0.12 https://github.com/openssl/openssl $(DLDIR)/openssl
+
+# ---------------------------------- Ruby 3.1 ----------------------------------
+ruby: init zlib libyaml libffi openssl $(BINDIR)/$(RUBY_PREFIX)-ruby310.dll
+
+$(BINDIR)/$(RUBY_PREFIX)-ruby310.dll: $(DLDIR)/ruby/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding Ruby...\e[0m\n"
+	@cd $(DLDIR)/ruby; make -j$(NPROC); make install
+
+$(DLDIR)/ruby/Makefile: $(DLDIR)/ruby/configure
+	@printf "\e[94m=>\e[0m \e[36mConfiguring Ruby...\e[0m\n"
+ifeq ($(LTO),1)
+	cd $(DLDIR)/ruby; \
 	export $(CONFIGURE_ENV); \
-	export CFLAGS="-flto $$CFLAGS"; \
-	export LDFLAGS="-flto $$LDFLAGS"; \
-	./configure $(CONFIGURE_ARGS) $(RUBY_CONFIGURE_ARGS) $(RUBY_FLAGS)
+	export CFLAGS="$$CFLAGS -flto"; export LDFLAGS="$$LDFLAGS -flto"; \
+	./configure $(CONFIGURE_ARGS) $(RUBY_CONFIGURE_ARGS)
+else
+	cd $(DLDIR)/ruby; $(CONFIGURE) $(RUBY_CONFIGURE_ARGS)
+endif
 
-$(DOWNLOADS)/ruby/configure: $(DOWNLOADS)/ruby/configure.ac
-	cd $(DOWNLOADS)/ruby; autoreconf -i
+$(DLDIR)/ruby/configure: $(DLDIR)/ruby/configure.ac
+	cd $(DLDIR)/ruby; autoreconf -i
 
-$(DOWNLOADS)/ruby/configure.ac:
-	$(CLONE) $(GITHUB)/mkxp-z/ruby $(DOWNLOADS)/ruby --single-branch --branch mkxp-z-3.1.3 --depth 1;
+$(DLDIR)/ruby/configure.ac:
+	@printf "\e[94m=>\e[0m \e[36mDownloading Ruby 3.1.4...\e[0m\n"
+	@$(GIT) -b v3_1_4 https://github.com/ruby/ruby $(DLDIR)/ruby
 
-# ====
-init_dirs:
-	@mkdir -p $(LIBDIR) $(INCLUDEDIR)
+# --------------------------- Ruby OpenSSL shared ext --------------------------
+ruby-ext-openssl: openssl ruby $(LIBDIR)/ruby/3.1.0/openssl
 
-powerwash: clean-downloads
+$(LIBDIR)/ruby/3.1.0/openssl: $(DLDIR)/ruby/ext/openssl/openssl.so
+	@printf "\e[94m=>\e[0m \e[36mInstalling openssl Ruby extension...\e[0m\n"
+	cd $(DLDIR)/ruby/ext/openssl; \
+	cp -v openssl.so $(LIBDIR)/ruby/3.1.0/$(RUBY_ARCH); \
+	cp -rv lib/* $(LIBDIR)/ruby/3.1.0
 
-clean-downloads:
-	-rm -rf downloads
+$(DLDIR)/ruby/ext/openssl/openssl.so: $(DLDIR)/ruby/ext/openssl/Makefile
+	@printf "\e[94m=>\e[0m \e[36mBuilding openssl Ruby extension...\e[0m\n"
+	cd $(DLDIR)/ruby/ext/openssl; make -j$(NPROC)
 
-deps-core: libtheora libvorbis pixman libpng physfs sdl2 sdl2image sdlsound sdl2ttf openal openssl fluidsynth uchardet
-everything: deps-core ruby
+$(DLDIR)/ruby/ext/openssl/Makefile:
+	@printf "\e[94m=>\e[0m \e[36mConfiguring openssl Ruby extension...\e[0m\n"
+	cd $(DLDIR)/ruby/ext/openssl; $(BINDIR)/ruby extconf.rb
