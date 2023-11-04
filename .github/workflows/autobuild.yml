@@ -5,7 +5,7 @@ on:
     branches:
     - dev
     paths:
-    - '.github/workflows/build.yml'
+    - '.github/workflows/autobuild.yml'
     - 'src/**'
     - 'binding/**'
     - 'shader/**'
@@ -20,7 +20,7 @@ on:
     branches:
     - dev
     paths:
-    - '.github/workflows/build.yml'
+    - '.github/workflows/autobuild.yml'
     - 'src/**'
     - 'binding/**'
     - 'shader/**'
