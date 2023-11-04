@@ -1,141 +1,169 @@
-# I have no idea what I'm doing
-name: Automatic Build
+name: Build
 
 on:
   push:
-    branches: ['dev', 'autobuild']
-    paths-ignore: ['*.md', '*.json', '*.png']
+    branches:
+    - dev
+    paths:
+    - '.github/workflows/build.yml'
+    - 'src/**'
+    - 'binding/**'
+    - 'shader/**'
+    - 'assets/**'
+    - 'windows/**'
+    - 'linux/**'
+    - 'macos/**'
+    - 'meson.build'
+    - 'meson_options.txt'
+
   pull_request:
-    branches: ['dev', 'autobuild']
-    paths-ignore: ['*.md', '*.json', '*.png']
+    branches:
+    - dev
+    paths:
+    - '.github/workflows/build.yml'
+    - 'src/**'
+    - 'binding/**'
+    - 'shader/**'
+    - 'assets/**'
+    - 'windows/**'
+    - 'linux/**'
+    - 'macos/**'
+    - 'meson.build'
+    - 'meson_options.txt'
+
+  workflow_dispatch:
 
 jobs:
   build-windows:
-    name: Windows
+    name: Windows (${{ matrix.msys.system }})
     runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        msys:
+        - { system: mingw32, env: mingw-w64-i686, ruby-prefix: msvcrt }
+        - { system: mingw64, env: mingw-w64-x86_64, ruby-prefix: x64-msvcrt }
+        - { system: ucrt64, env: mingw-w64-ucrt-x86_64, ruby-prefix: x64-ucrt }
+
     steps:
-      - uses: benjlevesque/short-sha@v2.2
-        id: short-sha
+      - name: Shorten commit SHA
+        id: shorten-sha
+        uses: benjlevesque/short-sha@v2.2
         with:
           length: 7
 
-      - uses: msys2/setup-msys2@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup MSYS2 (${{ matrix.msys.system }})
+        uses: msys2/setup-msys2@v2
         with:
-          msystem: mingw64
+          msystem: ${{ matrix.msys.system }}
           install: >-
             base-devel
             git
             ruby
             vim
-            mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-meson
-            mingw-w64-x86_64-autotools
-            mingw-w64-x86_64-gcc
+            ${{ matrix.msys.env }}-autotools
+            ${{ matrix.msys.env }}-cmake
+            ${{ matrix.msys.env }}-gcc
+            ${{ matrix.msys.env }}-meson
 
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - uses: actions/cache@v3
+      - name: Dependencies cache
+        id: cache-deps
+        uses: actions/cache@v3
         with:
-          path: |
-            windows/build-mingw64
-            windows/downloads
-          key: win-${{ hashFiles('windows/Makefile') }}
+          path: windows/build-${{ matrix.msys.system }}
+          key: windows-${{ matrix.msys.system }}-${{ hashFiles('windows/Makefile') }}
 
-      - name: Build all dependencies
+      - name: Build dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         shell: msys2 {0}
-        run: |
-          cd windows
-          make
+        working-directory: ${{ github.workspace }}/windows
+        run: make LTO=0
 
-      - name: Build exe
+      - name: Build mkxp-z
         shell: msys2 {0}
         run: |
           source windows/vars.sh
-          meson build
-          cd build
-          ninja
-          strip ./mkxp-z.exe
+          meson setup build
+          meson compile -Cbuild
 
-      - name: Prepare archive
+      - name: Prepare artifact
         shell: msys2 {0}
         run: |
-          mkdir build/artifact
-          cd build/artifact
-          cp /mingw64/bin/zlib1.dll .
-          cp ../../windows/build-mingw64/bin/x64-msvcrt-ruby310.dll .
-          cp -r ../../windows/build-mingw64/lib/ruby/3.1.0 .
-          mv ./3.1.0 ./stdlib
-          cp ../mkxp-z.exe .
-          cp ../../mkxp.json .
-          cp -r ../../scripts .
+          mkdir -v build/artifact
+          cp -v build/mkxp-z.exe build/artifact/
+          cp -v windows/build-${{ matrix.msys.system }}/bin/${{ matrix.msys.ruby-prefix }}-ruby310.dll build/artifact/
+          cp -vr windows/build-mingw64/lib/ruby/3.1.0 build/artifact/rubylib
+          cp -v mkxp.json build/artifact/
+          cp -vr scripts build/artifact/scripts
+          strip -S -x build/artifact/mkxp-z.exe
+          strip -S -x build/artifact/${{ matrix.msys.ruby-prefix }}-ruby310.dll
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: mkxp-z.windows.${{github.event_name == 'pull_request' && format('PR{0}', github.event.number) || github.ref_name}}-${{steps.short-sha.outputs.sha}}
-          path: |
-            build/artifact/*.dll
-            build/artifact/*.exe
-            build/artifact/mkxp.json
-            build/artifact/scripts/
-            build/artifact/stdlib/
+          name: mkxp-z_Windows_${{ matrix.msys.system }}_${{ github.event_name == 'pull_request' && format('PR{0}', github.event.number) || github.ref_name }}_${{ steps.shorten-sha.outputs.sha }}
+          path: build/artifact
 
-  build-linux:
-    name: Ubuntu 22.04
-    runs-on: ubuntu-22.04
+  build-ubuntu-20:
+    name: Ubuntu 20.04
+    runs-on: ubuntu-20.04
+
     steps:
-      - uses: benjlevesque/short-sha@v2.2
-        id: short-sha
+      - name: Shorten commit SHA
+        id: shorten-sha
+        uses: benjlevesque/short-sha@v2.2
         with:
           length: 7
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: actions/cache@v3
-        with:
-          path: |
-            linux/build-x86_64
-            linux/downloads
-          key: lin-${{ hashFiles('linux/Makefile') }}
-
-      - name: Install apt dependencies
+      - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install git build-essential cmake meson autoconf automake libtool pkg-config ruby bison zlib1g-dev libbz2-dev xorg-dev libgl1-mesa-dev libasound2-dev libpulse-dev -y
+          sudo apt install -y wget git vim ruby build-essential autoconf automake libtool pkg-config cmake bison libgl1-mesa-dev xorg-dev libxext-dev libasound2-dev libpulse-dev
 
-      - name: Build everything else
-        run: |
-          cd linux
-          make
+      - name: Dependencies cache
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: linux/build-x86_64
+          key: linux-x86_64-${{ hashFiles('linux/Makefile') }}
 
-      - name: Build executable
+      - name: Build dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        working-directory: ${{ github.workspace }}/linux
+        run: make LTO=0
+
+      - name: Build mkxp-z
         run: |
           source linux/vars.sh
-          meson build --bindir=. --prefix=$GITHUB_WORKSPACE/build/local
-          cd build
-          ninja
-          ninja install
+          meson build --bindir=. --prefix=$GITHUB_WORKSPACE/build/artifact
+          meson compile -Cbuild
+          meson install -Cbuild
 
-      - name: Prepare archive
+      - name: Prepare artifact
         run: |
-          cd build/local
-          cp -r ../../linux/build-x86_64/lib/ruby/3.1.0 .
-          mv ./3.1.0 ./stdlib
-          cp ../../mkxp.json .
-          cp -r ../../scripts .
-          cd ..
-          zip -r local.zip local
+          cp -vr linux/build-x86_64/lib/ruby/3.1.0 build/artifact/rubylib
+          cp -v mkxp.json build/artifact/
+          cp -vr scripts build/artifact/scripts
+          strip -S -x build/artifact/mkxp-z.x86_64
+          strip -S -x build/artifact/lib64/libruby.so.3.1
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: mkxp-z.linux.${{github.event_name == 'pull_request' && format('PR{0}', github.event.number) || github.ref_name}}-${{steps.short-sha.outputs.sha}}
-          path: build/local.zip
+          name: mkxp-z_Linux_Ubuntu-20.04_${{ github.event_name == 'pull_request' && format('PR{0}', github.event.number) || github.ref_name }}_${{steps.shorten-sha.outputs.sha}}
+          path: build/artifact
 
   build-macos:
     name: macOS
     runs-on: macos-latest
+
     steps:
       - uses: benjlevesque/short-sha@v2.2
         id: short-sha
