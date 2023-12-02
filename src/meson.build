@@ -28,10 +28,8 @@ if sdl2_image.found() == false
 endif
 
 if host_system == 'windows'
-    bz2 = dependency('bzip2', static: build_static)
     iconv = compilers['cpp'].find_library('iconv', static: build_static)
 else
-    bz2 = compilers['cpp'].find_library('bz2')
     # FIXME: Specifically asking for static doesn't work if iconv isn't
     # installed in the system prefix somewhere
     iconv = compilers['cpp'].find_library('iconv')
@@ -96,7 +94,7 @@ global_include_dirs += include_directories('.',
     'util', 'util/sigslot', 'util/sigslot/adapter'
 )
 
-global_dependencies += [openal, zlib, bz2, sdl2, sdl_sound, pixman, physfs, theora, vorbisfile, vorbis, ogg, sdl2_ttf, freetype, sdl2_image, png, iconv, uchardet]
+global_dependencies += [openal, zlib, sdl2, sdl_sound, pixman, physfs, theora, vorbisfile, vorbis, ogg, sdl2_ttf, freetype, sdl2_image, png, iconv, uchardet]
 if host_system == 'windows'
     global_dependencies += compilers['cpp'].find_library('wsock32')
 endif
