@@ -1,4 +1,3 @@
-
 embedded_shaders = [
     'common.h',
     'transSimple.frag',
@@ -36,11 +35,9 @@ foreach file : embedded_shaders_f
     global_sources += custom_target(embedded_shaders[count],
         input: file,
         output: '@0@.xxd'.format(embedded_shaders[count]),
-        command: [
-            xxd, '-i', '@INPUT@'
-        ],
+        command: [xxd, '-i', '@INPUT@'],
         capture: true,
         depend_files: embedded_shaders_f[count]
-        )
+    )
     count += 1
 endforeach

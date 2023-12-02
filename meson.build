@@ -1,42 +1,66 @@
-project('mkxp-z', 'c', 'cpp', version: '2.4.2', meson_version: '>=0.56.0', default_options: ['cpp_std=c++14', 'buildtype=release'])
+project(
+    'mkxp-z',
+    'cpp', 'c',
+    version: '2.4.2',
+    license: 'GPLv2',
+    meson_version: '>=0.56.0',
+    default_options: [
+        'cpp_std=c++14',
+        'buildtype=release'
+    ]
+)
 
 host_system = host_machine.system()
 
 if host_system == 'darwin'
-    error('\nThis Meson project no longer supports macOS. Please use the Xcode project instead.')
+    error('\n\nThis Meson project no longer supports macOS. Please use the Xcode project instead.')
 endif
 
+compilers = {
+    'cpp': meson.get_compiler('cpp')
+}
+
+sizeof = {
+    'void*': compilers['cpp'].sizeof('void*'),
+    'long': compilers['cpp'].sizeof('long')
+}
+
+win64 = (sizeof['void*'] != sizeof['long'])
+
+# Get xxd program for embedding assets/shaders into executable
 xxd = find_program('xxd', native: true)
 
-git_hash = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
-
-compilers = {'cpp': meson.get_compiler('cpp')}
-
+# Define global variables of project
 global_sources = []
 global_dependencies = []
 global_include_dirs = []
 global_args = []
 global_link_args = []
 
-sizeof = {'void*': compilers['cpp'].sizeof('void*'),
-          'long': compilers['cpp'].sizeof('long')
-         }
-win64 = (sizeof['void*'] != sizeof['long'])
+# Get latest git commit hash
+git_hash = run_command('git', 'rev-parse', '--short', 'HEAD', capture: true, check: true).stdout().strip()
 
 global_args += '-DMKXPZ_BUILD_MESON'
 global_args += '-DMKXPZ_VERSION="@0@"'.format(meson.project_version())
 global_args += '-DMKXPZ_GIT_HASH="@0@"'.format(git_hash)
 global_args += '-DHAVE_NANOSLEEP'
-# ====================
-# Ext libs
-# ====================
 
-# STEAMWORKS
+# OpenGL backend
+gfx_backend = get_option('gfx_backend')
+if gfx_backend == 'gles'
+    # Needs to be manually set up for now
+    global_args += '-DGLES2_HEADER'
+elif gfx_backend == 'gl'
+    global_dependencies += dependency('gl')
+endif
 
+# Steamworks SDK
 steamworks = false
 steamworks_path = get_option('steamworks_path')
 if steamworks_path != ''
     libname = 'steam_api'
+
+    # Determine directory and library names for 32-bit and 64-bit
     if host_system == 'linux'
         if sizeof['void*'] == 4
             bindir = 'linux32'
@@ -60,22 +84,10 @@ if steamworks_path != ''
         global_args += '-DMKXPZ_STEAM'
         global_sources += 'steamshim/steamshim_child.c'
         steamworks = true
+    else
+        warning('Could not locate Steamworks SDK in ' + steam_libpath)
     endif
 endif
-
-# GLES
-gfx_backend = get_option('gfx_backend')
-if gfx_backend == 'gles'
-    # Needs to be manually set up for now
-    global_args += '-DGLES2_HEADER'
-elif gfx_backend == 'gl'
-    global_dependencies += dependency('gl')
-    # boop
-endif
-
-# ====================
-# Main source
-# ====================
 
 # Suppress warnings
 global_args += ['-Wno-non-virtual-dtor', '-Wno-reorder', '-Wno-uninitialized', '-Wno-unknown-pragmas', '-Wno-stringop-truncation']
@@ -113,6 +125,10 @@ if get_option('static_executable') == true
     build_static = true
 endif
 
+if get_option('cjk_fallback_font') == true
+    add_project_arguments('-DMKXPZ_CJK_FONT', language: 'cpp')
+endif
+
 global_args += '-DMKXPZ_INIT_GL_LATER'
 
 subdir('src')
@@ -123,7 +139,6 @@ subdir('assets')
 global_include_dirs += include_directories('src', 'binding')
 
 rpath = ''
-
 if host_system == 'windows'
     windows_resource_directory = '../' + get_option('windows_resource_directory')
     subdir('windows')
@@ -143,12 +158,15 @@ endif
 
 exe_name = meson.project_name()
 
+# Add suffix of CPU arch to executable filename
 if host_system == 'linux' and get_option('appimage') == false
     exe_name += '.' + host_machine.cpu()
 endif
 
+# Steamshim executable target
 if steamworks == true
     exe_name = 'steam_' + exe_name
+
     la = ''
     if build_static == true
         if host_system == 'windows'
@@ -161,7 +179,7 @@ if steamworks == true
     shim_args = [
         '-DGAME_LAUNCH_NAME="' + exe_name + '"',
         '-I' + steamworks_path + '/public'
-        ]
+    ]
 
     if get_option('steam_appid') != ''
         shim_args += '-DSTEAM_APPID=' + get_option('steam_appid')
@@ -174,16 +192,20 @@ if steamworks == true
         shim_ws = 'windows'
     endif
 
-    executable(meson.project_name(),
+    executable(
+        meson.project_name(),
         sources: files('steamshim/steamshim_parent.cpp'),
         dependencies: steamlib,
         cpp_args: shim_args,
         link_args: la.split(),
         win_subsystem: shim_ws,
-        install: (host_system != 'windows'))
+        install: (host_system != 'windows')
+    )
 endif
 
-executable(exe_name,
+# mkxp-z executable target
+executable(
+    exe_name,
     sources: global_sources,
     dependencies: global_dependencies,
     include_directories: global_include_dirs,

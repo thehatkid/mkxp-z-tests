@@ -1,31 +1,19 @@
-physfs = dependency('physfs', version: '>=2.1', static: build_static)
-openal = dependency('openal', static: build_static, method: 'pkg-config')
-theora = dependency('theora', static: build_static)
-vorbisfile = dependency('vorbisfile', static: build_static)
-vorbis = dependency('vorbis', static: build_static)
-ogg = dependency('ogg', static: build_static)
+# Dependencies
 sdl2 = dependency('SDL2', static: build_static)
-sdl_sound = compilers['cpp'].find_library('SDL2_sound')
+sdl2_image = dependency('SDL2_image', method: 'cmake', modules: ['SDL2_image::SDL2_image-static', 'SDL2_image::brotlicommon-static', 'SDL2_image::brotlidec-static', 'SDL2_image::hwy', 'SDL2_image::jxl_dec-static'], static: build_static)
 sdl2_ttf = dependency('SDL2_ttf', method: 'cmake', modules: ['SDL2_ttf::SDL2_ttf-static'], static: build_static)
+sdl2_sound = dependency('SDL2_sound', static: build_static)
+physfs = dependency('physfs', version: '>=2.1', static: build_static)
+openal = dependency('openal', method: 'pkg-config', static: build_static)
 freetype = dependency('freetype2', static: build_static)
+harfbuzz = dependency('harfbuzz', static: build_static)
 pixman = dependency('pixman-1', static: build_static)
-png = dependency('libpng', static: build_static)
+ogg = dependency('ogg', static: build_static)
+vorbis = dependency('vorbis', static: build_static)
+vorbisfile = dependency('vorbisfile', static: build_static)
+theora = dependency('theora', static: build_static)
 zlib = dependency('zlib', static: build_static)
 uchardet = dependency('uchardet', static: build_static)
-
-# As no pkg-config file is generated for static sdl2_image, and pkg-config is
-# the default option for meson detecting dependencies, pkg-config will fail to
-# find sdl2_image.pc in the build's lib/pkgconfig folder and instead pull it
-# from the locally installed packages if it exists.
-# To work around this, we first check to see if cmake can find our sdl2_image
-# sub project and use that, then check using pkg-config as normal if we are not
-# building the sub project.
-# It looks like upstream SDL_image fixed this for SDL3, so we can hopefully
-# remove this workaround after eventually upgrading to SDL3.
-sdl2_image = dependency('SDL2_image', modules: ['SDL2_image::SDL2_image-static', 'SDL2_image::brotlidec-static', 'SDL2_image::brotlicommon-static', 'SDL2_image::hwy', 'SDL2_image::jxl_dec-static'], static: build_static, method: 'cmake', required: false)
-if sdl2_image.found() == false
-    sdl2_image = dependency('SDL2_image', modules: ['SDL2_image::SDL2_image-static', 'SDL2_image::brotlidec-static', 'SDL2_image::brotlicommon-static', 'SDL2_image::hwy', 'SDL2_image::jxl_dec-static'], static: build_static)
-endif
 
 if host_system == 'windows'
     iconv = compilers['cpp'].find_library('iconv', static: build_static)
@@ -36,7 +24,6 @@ else
     global_dependencies += compilers['cpp'].find_library('charset')
 endif
 
-# If OpenSSL is present, you get HTTPS support
 if get_option('enable-https') == true
     openssl = dependency('openssl', required: false, static: build_static)
     if openssl.found() == true
@@ -50,15 +37,10 @@ if get_option('enable-https') == true
     endif
 endif
 
-# Windows needs to be treated like a special needs child here
-explicit_libs = ''
-if host_system == 'windows'
-    # Newer versions of Ruby will refuse to link without these
-    explicit_libs += 'libmsvcrt;libgcc;libmingwex;libgmp;'
-endif
 if build_static == true
     if host_system == 'windows'
-        # '-static-libgcc', '-static-libstdc++' are here to avoid needing to ship a separate libgcc_s_seh-1.dll on Windows; it still works without those flags if you have the dll.
+        # '-static-libgcc', '-static-libstdc++' are here to avoid needing to ship a separate libgcc_s_seh-1.dll on Windows.
+        # It still works without those flags if you have the DLLs.
         global_link_args += ['-static-libgcc', '-static-libstdc++', '-Wl,-Bstatic', '-lgcc', '-lstdc++', '-lpthread', '-Wl,-Bdynamic']
     else
         global_link_args += ['-static-libgcc', '-static-libstdc++']
@@ -66,10 +48,16 @@ if build_static == true
     global_args += '-DAL_LIBTYPE_STATIC'
 endif
 
+explicit_libs = ''
+if host_system == 'windows'
+    # Newer versions of Ruby will refuse to link without these
+    explicit_libs += 'libmsvcrt;libgcc;libmingwex;libgmp;'
+endif
+
 foreach l : explicit_libs.split(';')
-        if l != ''
-            global_link_args += '-l:' + l + '.a'
-        endif
+    if l != ''
+        global_link_args += '-l:' + l + '.a'
+    endif
 endforeach
 
 alcdev_struct = 'ALCdevice_struct'
@@ -78,23 +66,11 @@ if openal.type_name() == 'pkgconfig'
         alcdev_struct = 'ALCdevice'
     endif
 endif
-
 global_args += '-DMKXPZ_ALCDEVICE=' + alcdev_struct
 
+# Add dependencies
+global_dependencies += [sdl2, sdl2_image, sdl2_ttf, sdl2_sound, physfs, openal, freetype, harfbuzz, pixman, ogg, vorbis, vorbisfile, theora, zlib, iconv, uchardet]
 
-global_include_dirs += include_directories('.',
-    'audio',
-    'crypto',
-    'display', 'display/gl', 'display/libnsgif', 'display/libnsgif/utils',
-    'etc',
-    'filesystem', 'filesystem/ghc',
-    'input',
-    'net',
-    'system',
-    'util', 'util/sigslot', 'util/sigslot/adapter'
-)
-
-global_dependencies += [openal, zlib, sdl2, sdl_sound, pixman, physfs, theora, vorbisfile, vorbis, ogg, sdl2_ttf, freetype, sdl2_image, png, iconv, uchardet]
 if host_system == 'windows'
     global_dependencies += compilers['cpp'].find_library('wsock32')
 endif
@@ -108,17 +84,34 @@ if get_option('shared_fluid') == true
     endif
 endif
 
-if get_option('cjk_fallback_font') == true
-    add_project_arguments('-DMKXPZ_CJK_FONT', language: 'cpp')
-endif
+# Add mkxp-z include directories
+global_include_dirs += include_directories(
+    '.',
+    'audio',
+    'crypto',
+    'display',
+    'display/gl',
+    'display/libnsgif',
+    'display/libnsgif/utils',
+    'etc',
+    'filesystem',
+    'filesystem/ghc',
+    'input',
+    'net',
+    'system',
+    'util',
+    'util/sigslot',
+    'util/sigslot/adapter'
+)
 
-main_source = files(
+# Add mkxp-z source files
+global_sources += files(
     'main.cpp',
     'config.cpp',
     'eventthread.cpp',
     'settingsmenu.cpp',
     'sharedstate.cpp',
-    
+
     'audio/alstream.cpp',
     'audio/audio.cpp',
     'audio/audiostream.cpp',
@@ -161,13 +154,13 @@ main_source = files(
 
     'util/iniconfig.cpp',
     'util/win-consoleutils.cpp',
-    
+
     'etc/etc.cpp',
     'etc/table.cpp',
 
     'filesystem/filesystem.cpp',
     'filesystem/filesystemImpl.cpp',
-    
+
     'input/input.cpp',
     'input/keybindings.cpp',
 
@@ -176,5 +169,3 @@ main_source = files(
 
     'system/systemImpl.cpp'
 )
-
-global_sources += main_source

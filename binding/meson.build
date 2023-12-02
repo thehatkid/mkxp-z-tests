@@ -1,4 +1,3 @@
-
 if get_option('mri_includes') == ''
     ver = get_option('mri_version')
     if ver.version_compare('<=1.8')
