@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02054AB6B60F49E3DF366CBD /* libjxl_dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 672947DA8FC50921A7ED814A /* libjxl_dec.a */; };
+		0CE94E7EB7A0BC4EEA42116C /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 050F46DEB45795AD16F49F5D /* libharfbuzz.a */; };
 		319D403193F13F7989325EEA /* bicubic.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBEA4C45BE737EE0FF5A8A4C /* bicubic.frag */; };
 		3389416F9825F408A40824F3 /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */; };
 		3B10EC5C2568D40500372D13 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE081562568D3A60006849F /* CoreGraphics.framework */; };
@@ -507,6 +508,7 @@
 		3BF5B4C02685883B00A3B240 /* libSDL2_sound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF5B4BE2685883B00A3B240 /* libSDL2_sound.a */; };
 		3E2542219A9FD2B16781B1F5 /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4B4BA780D4407F24279700 /* libbrotlidec-static.a */; };
 		3F7F41D98CEDE6F418AAB0D2 /* bicubic.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBEA4C45BE737EE0FF5A8A4C /* bicubic.frag */; };
+		5AD346B0913288C7028D0D21 /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 050F46DEB45795AD16F49F5D /* libharfbuzz.a */; };
 		74E9471FB1A876B0D9F2ABFF /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */; };
 		96563582279A5ABD003D6A75 /* libtheora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96563581279A5ABD003D6A75 /* libtheora.a */; };
 		96563583279A5ABD003D6A75 /* libtheora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96563581279A5ABD003D6A75 /* libtheora.a */; };
@@ -525,6 +527,7 @@
 		96573E83279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
 		96573E84279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
 		96D8EDD128728DCE00A331EA /* gamecontrollerdb.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96D8EDD028728DCA00A331EA /* gamecontrollerdb.txt */; };
+		9C5B4308AC69F5FC239AA4A6 /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC41CF80AE76C3395441FE /* libharfbuzz.a */; };
 		9DBD4B93938DE5373F0B275B /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4B4BA780D4407F24279700 /* libbrotlidec-static.a */; };
 		ADD04C5294116C82CB009D8A /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */; };
 		AE974950A93FC9A717E13D28 /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */; };
@@ -535,6 +538,7 @@
 		E8E44E4292897395B7E25A92 /* libhwy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3D4EBA94DA7A5C543A337E /* libhwy.a */; };
 		ECEC415E939B13D8C959F8D7 /* libhwy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3D4EBA94DA7A5C543A337E /* libhwy.a */; };
 		EF05486C9854302CD39A0B80 /* libhwy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 667B4E3FBC5B03611D5C334E /* libhwy.a */; };
+		F4574C4CB923C3B85C9F2B78 /* libharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BC41CF80AE76C3395441FE /* libharfbuzz.a */; };
 		F7CA439883B85807B560AF67 /* libhwy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 667B4E3FBC5B03611D5C334E /* libhwy.a */; };
 		FE5204162A08E27D0070038A /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FE5204172A08E2880070038A /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -848,6 +852,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		050F46DEB45795AD16F49F5D /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-macosx-universal/lib/libharfbuzz.a"; sourceTree = "<group>"; };
 		293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-macosx-x86_64/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
 		3B012198261544A0001E574A /* string-util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "string-util.h"; sourceTree = "<group>"; };
 		3B10EC832568E78400372D13 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../assets/icon.png; sourceTree = "<group>"; };
@@ -1139,6 +1144,7 @@
 		96D8EDD028728DCA00A331EA /* gamecontrollerdb.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = gamecontrollerdb.txt; path = ../assets/gamecontrollerdb.txt; sourceTree = "<group>"; };
 		A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-macosx-universal/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
 		CBEA4C45BE737EE0FF5A8A4C /* bicubic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = bicubic.frag; path = ../shader/bicubic.frag; sourceTree = "<group>"; };
+		F4BC41CF80AE76C3395441FE /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-macosx-x86_64/lib/libharfbuzz.a"; sourceTree = "<group>"; };
 		FE5204152A08E27D0070038A /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		FE52041A2A08E58D0070038A /* lanczos3.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = lanczos3.frag; path = ../shader/lanczos3.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1196,6 +1202,7 @@
 				74E9471FB1A876B0D9F2ABFF /* libbrotlidec-static.a in Frameworks */,
 				BB8B436FB4831131BD506069 /* libbrotlicommon-static.a in Frameworks */,
 				ECEC415E939B13D8C959F8D7 /* libhwy.a in Frameworks */,
+				F4574C4CB923C3B85C9F2B78 /* libharfbuzz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,6 +1257,7 @@
 				3E2542219A9FD2B16781B1F5 /* libbrotlidec-static.a in Frameworks */,
 				C71F461FBD62A493F478410D /* libbrotlicommon-static.a in Frameworks */,
 				EF05486C9854302CD39A0B80 /* libhwy.a in Frameworks */,
+				0CE94E7EB7A0BC4EEA42116C /* libharfbuzz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,6 +1306,7 @@
 				9DBD4B93938DE5373F0B275B /* libbrotlidec-static.a in Frameworks */,
 				3389416F9825F408A40824F3 /* libbrotlicommon-static.a in Frameworks */,
 				F7CA439883B85807B560AF67 /* libhwy.a in Frameworks */,
+				5AD346B0913288C7028D0D21 /* libharfbuzz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,6 +1354,7 @@
 				AE974950A93FC9A717E13D28 /* libbrotlidec-static.a in Frameworks */,
 				ADD04C5294116C82CB009D8A /* libbrotlicommon-static.a in Frameworks */,
 				E8E44E4292897395B7E25A92 /* libhwy.a in Frameworks */,
+				9C5B4308AC69F5FC239AA4A6 /* libharfbuzz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1783,6 +1793,7 @@
 				3C4B4BA780D4407F24279700 /* libbrotlidec-static.a */,
 				A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */,
 				667B4E3FBC5B03611D5C334E /* libhwy.a */,
+				050F46DEB45795AD16F49F5D /* libharfbuzz.a */,
 			);
 			name = Universal;
 			sourceTree = "<group>";
@@ -1910,6 +1921,7 @@
 				5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */,
 				293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */,
 				3C3D4EBA94DA7A5C543A337E /* libhwy.a */,
+				F4BC41CF80AE76C3395441FE /* libharfbuzz.a */,
 			);
 			name = Intel;
 			sourceTree = "<group>";
