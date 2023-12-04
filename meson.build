@@ -167,6 +167,13 @@ endif
 if steamworks == true
     exe_name = 'steam_' + exe_name
 
+    shim_sources = files('steamshim/steamshim_parent.cpp')
+
+    # Append Windows resources
+    if host_system == 'windows'
+        shim_sources += windows_resources_steamshim
+    endif
+
     la = ''
     if build_static == true
         if host_system == 'windows'
@@ -187,14 +194,14 @@ if steamworks == true
 
     if get_option('steamshim_debug') == true
         shim_args += '-DSTEAMSHIM_DEBUG'
-        shim_ws = 'console'
+        shim_ws = 'console,6.0'
     else
-        shim_ws = 'windows'
+        shim_ws = 'windows,6.0'
     endif
 
     executable(
         meson.project_name(),
-        sources: files('steamshim/steamshim_parent.cpp'),
+        sources: shim_sources,
         dependencies: steamlib,
         cpp_args: shim_args,
         link_args: la.split(),
@@ -215,5 +222,5 @@ executable(
     objc_args: global_args,
     objcpp_args: global_args,
     win_subsystem: 'windows',
-    install: (host_system != 'windows')
+    install: (host_system != 'windows,6.0')
 )

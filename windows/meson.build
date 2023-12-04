@@ -1,10 +1,23 @@
-win = import('windows')
+windows = import('windows')
 
-res = files(
-    windows_resource_directory + '/resource.h',
-    windows_resource_directory + '/icon.ico',
-    windows_resource_directory + '/mkxpz.manifest',
-    windows_resource_directory + '/resource.rc'
+# mkxp-z Windows resources
+windows_resources = windows.compile_resources(
+    windows_resource_directory + '/resource-mkxpz.rc',
+    depend_files: files(
+        windows_resource_directory + '/resource.h',
+        windows_resource_directory + '/icon.ico',
+        windows_resource_directory + '/mkxpz.manifest'
+    )
 )
 
-windows_resources = win.compile_resources(windows_resource_directory + '/resource.rc', depend_files: res)
+# Steamshim Windows resources
+if steamworks == true
+    windows_resources_steamshim = windows.compile_resources(
+        windows_resource_directory + '/resource-steamshim.rc',
+        depend_files: files(
+            windows_resource_directory + '/resource.h',
+            windows_resource_directory + '/icon.ico',
+            windows_resource_directory + '/mkxpz.manifest'
+        )
+    )
+endif

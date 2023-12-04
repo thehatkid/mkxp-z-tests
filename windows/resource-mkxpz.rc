@@ -1,0 +1,30 @@
+#include <windows.h>
+
+#include "resource.h"
+
+IDI_APPICON ICON "icon.ico"
+IDI_MANIFEST RT_MANIFEST "mkxpz.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 2, 4, 2, 0
+PRODUCTVERSION 2, 4, 2, 0
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904B0"
+        {
+            VALUE "FileDescription",  "mkxp-z"
+            VALUE "FileVersion",      "2.4.2"
+            VALUE "ProductName",      "mkxp-z"
+            VALUE "ProductVersion",   "2.4.2"
+            VALUE "InternalName",     "mkxp-z"
+            VALUE "OriginalFilename", "mkxp-z.exe"
+            //VALUE "CompanyName",      ""
+            //VALUE "LegalCopyright",   ""
+        }
+    }
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0409, 1200
+    }
+}
