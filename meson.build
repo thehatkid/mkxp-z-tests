@@ -165,8 +165,6 @@ endif
 
 # Steamshim executable target
 if steamworks == true
-    exe_name = 'steam_' + exe_name
-
     shim_sources = files('steamshim/steamshim_parent.cpp')
 
     # Append Windows resources
@@ -200,7 +198,7 @@ if steamworks == true
     endif
 
     executable(
-        meson.project_name(),
+        'steamshim',
         sources: shim_sources,
         dependencies: steamlib,
         cpp_args: shim_args,
