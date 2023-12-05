@@ -1,5 +1,12 @@
 windows = import('windows')
 
+# Windows install data
+if steamworks == true
+    meson.add_install_script('install.sh', steam_libpath, libname)
+else
+    meson.add_install_script('install.sh')
+endif
+
 # mkxp-z Windows resources
 windows_resources = windows.compile_resources(
     windows_resource_directory + '/resource-mkxpz.rc',
