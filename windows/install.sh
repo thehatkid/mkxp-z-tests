@@ -29,10 +29,6 @@ echo "Installing Ruby library..."
 cp -pur "$MKXPZ_PREFIX/lib/ruby/3.1.0" "$MESON_INSTALL_PREFIX/rubylib"
 
 if [[ -n "$STEAM_PATH" ]] && [[ -n "$STEAM_LIBNAME" ]]; then
-  # Copy Steamshim executable
-  echo "Installing steamshim.exe..."
-  cp -pu "$MESON_BUILD_ROOT/steamshim.exe" "$MESON_INSTALL_PREFIX/"
-
   # Copy Steamworks SDK DLL
   echo "Installing $STEAM_LIBNAME.dll..."
   cp -pu "$STEAM_PATH/$STEAM_LIBNAME.dll" "$MESON_INSTALL_PREFIX/"

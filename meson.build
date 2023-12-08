@@ -205,7 +205,7 @@ if steamworks == true
         cpp_args: shim_args,
         link_args: la.split(),
         win_subsystem: shim_ws,
-        install: (host_system != 'windows')
+        install: true
     )
 endif
 
@@ -220,6 +220,6 @@ executable(
     cpp_args: global_args,
     objc_args: global_args,
     objcpp_args: global_args,
-    win_subsystem: 'windows',
-    install: (host_system != 'windows,6.0')
+    win_subsystem: 'windows,6.0',
+    install: true
 )
