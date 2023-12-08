@@ -396,8 +396,8 @@ ifeq ($(SDL_IMAGE_JXL),1)
 endif
 
 $(DLDIR)/sdl2_image/CMakeLists.txt:
-	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2_image 2.6.3...\e[0m\n"
-	@$(GIT) -b release-2.6.3 https://github.com/libsdl-org/SDL_image $(DLDIR)/sdl2_image
+	@printf "\e[94m=>\e[0m \e[36mDownloading SDL2_image 2.8.0...\e[0m\n"
+	@$(GIT) -b release-2.8.0 https://github.com/libsdl-org/SDL_image $(DLDIR)/sdl2_image
 ifeq ($(SDL_IMAGE_JXL),1)
 	@printf "\e[94m=>\e[0m \e[36mDownloading libjxl for SDL2_image...\e[0m\n"
 	@cd $(DLDIR)/sdl2_image; git submodule update -q --init --recursive external/libjxl

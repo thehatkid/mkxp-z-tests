@@ -1,6 +1,6 @@
 # Dependencies
 sdl2 = dependency('SDL2', static: build_static)
-sdl2_image = dependency('SDL2_image', method: 'cmake', modules: ['SDL2_image::SDL2_image-static', 'SDL2_image::brotlicommon-static', 'SDL2_image::brotlidec-static', 'SDL2_image::hwy', 'SDL2_image::jxl_dec-static'], static: build_static)
+sdl2_image = dependency('SDL2_image', method: 'cmake', modules: ['SDL2_image::SDL2_image-static', 'SDL2_image::brotlicommon-static', 'SDL2_image::brotlidec-static', 'SDL2_image::hwy', 'SDL2_image::external_libjxl'], static: build_static)
 sdl2_ttf = dependency('SDL2_ttf', method: 'cmake', modules: ['SDL2_ttf::SDL2_ttf-static'], static: build_static)
 sdl2_sound = dependency('SDL2_sound', static: build_static)
 physfs = dependency('physfs', version: '>=2.1', static: build_static)
