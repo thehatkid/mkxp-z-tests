@@ -1,38 +1,32 @@
-*.o
-*.pro.*
-*.bak
-*.vert.xxd
-*.frag.xxd
-*.ttf.xxd
+# Build directories
+build*/
+bin/
+obj/
 
-mkxp
-xxd+
-
-/res
-
-/build
-/builddir
-
-# VS Code
-/.vscode
+# Visual Studio Code
+.vscode/
+.history/
 *.code-workspace
 
-# Codeblocks
-mkxp.layout
-mkxp.cbp
+# CodeBlocks
+*.cbp
+*.layout
+*.depend
 
-# General
+# GCC coverage files
+*.gcno
+*.gcda
+
+# GNU Debugger files
+.gdb_history
+
+# macOS general files
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
 ._*
 
-# Files that might appear in the root of a volume
+# macOS: Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
@@ -41,27 +35,24 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
-# Directories potentially created on remote AFP share
+# macOS: Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
 .apdisk
 
-
-# Xcode
-
-## User settings
+# Xcode: User settings
 xcuserdata/
 .xcuserdatad
 *.xcuserstate
 xcschememanagement.plist
 
-## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+# Xcode: Compatibility with Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
 
-## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+# Xcode: Compatibility with Xcode 3 and earlier
 DerivedData/
 *.moved-aside
 *.pbxuser
@@ -72,6 +63,3 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-
-## Gcc Patch
-/*.gcno
