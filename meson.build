@@ -37,9 +37,15 @@ global_dependencies = []
 global_include_dirs = []
 global_args = []
 global_link_args = []
+windres_flags = []
 
 # Get latest git commit hash
 git_hash = run_command('git', 'rev-parse', '--short', 'HEAD', capture: true, check: true).stdout().strip()
+
+if get_option('buildtype') == 'debug'
+    global_args += '-DDEBUG'
+    windres_flags += '-DDEBUG'
+endif
 
 global_args += '-DMKXPZ_BUILD_MESON'
 global_args += '-DMKXPZ_VERSION="@0@"'.format(meson.project_version())
