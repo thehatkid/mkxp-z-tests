@@ -28,6 +28,8 @@ sizeof = {
 
 win64 = (sizeof['void*'] != sizeof['long'])
 
+fs = import('fs')
+
 # Get xxd program for embedding assets/shaders into executable
 xxd = find_program('xxd', native: true)
 
@@ -40,7 +42,17 @@ global_link_args = []
 windres_flags = []
 
 # Get latest git commit hash
-git_hash = run_command('git', 'rev-parse', '--short', 'HEAD', capture: true, check: true).stdout().strip()
+git_hash = '0000000'
+if fs.is_dir('.git')
+    git = find_program('git', required: false)
+    if git.found()
+        git_hash = run_command('git', 'rev-parse', '--short', 'HEAD', capture: true, check: true).stdout().strip()
+    else
+        warning('Unable to get Git; fallback MKXPZ_GIT_HASH to 0000000')
+    endif
+else
+    warning('".git" directory was not found; fallback MKXPZ_GIT_HASH to 0000000')
+endif
 
 if get_option('buildtype') == 'debug'
     global_args += '-DDEBUG'
