@@ -1,6 +1,10 @@
 [Desktop Entry]
-Name=mkxp-z
-Exec=mkxp-z
-Icon=mkxp-z
 Type=Application
+Name=mkxp-z
+Icon=mkxp-z
+Exec=mkxp-z
+Terminal=false
+Comment=A very heavily modified fork of mkxp
 Categories=Game;
+X-AppImage-Name=mkxp-z
+X-AppImage-Version=2.4.2

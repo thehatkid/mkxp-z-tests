@@ -1,6 +1,6 @@
 project(
     'mkxp-z',
-    'cpp', 'c',
+    ['cpp', 'c'],
     version: '2.4.2',
     license: 'GPLv2',
     meson_version: '>=0.56.0',
@@ -175,12 +175,7 @@ else
     endif
 endif
 
-exe_name = meson.project_name()
-
-# Add suffix of CPU arch to executable filename
-if host_system == 'linux' and get_option('appimage') == false
-    exe_name += '.' + host_machine.cpu()
-endif
+exe_name = meson.project_name().to_lower()
 
 # Steamshim executable target
 if steamworks == true

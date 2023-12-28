@@ -666,6 +666,16 @@ static int mainline(void) {
     chdir(appResourcePath().c_str());
 #endif
 
+#ifdef __linux__
+  // check for AppImage mount path
+  char *appimageDir = getenv("APPDIR");
+  if (appimageDir) {
+    strcat(appimageDir, "/usr/bin");
+    if (chdir(appimageDir) != 0)
+      dbgpipe("Failed to change CWD to %s\n", appimageDir);
+  }
+#endif
+
   PipeType pipeParentRead = NULLPIPE;
   PipeType pipeParentWrite = NULLPIPE;
   PipeType pipeChildRead = NULLPIPE;

@@ -1,18 +1,20 @@
-swarg = ''
-if steamworks == true
-    swarg = steam_libpath
+if sizeof['long'] == 8
+    archbits = '64'
+else
+    archbits = '32'
 endif
 
 if get_option('appimage') == true
-    install_data('AppRun')
-    install_data('mkxp-z.png')
-    install_data('mkxp-z.desktop')
-    meson.add_install_script('make_appimg.sh', meson.project_name(), get_option('appimagekit_path'), swarg)
-else
-    if sizeof['long'] == 8
-        archarg = '64'
+    appimagetool = get_option('appimagekit_path')
+    if steamworks == true
+        meson.add_install_script('make_appimg.sh', appimagetool, archbits, steam_libpath)
     else
-        archarg = '32'
+        meson.add_install_script('make_appimg.sh', appimagetool, archbits)
     endif
-    meson.add_install_script('install.sh', meson.project_name() + '.' + host_machine.cpu(), archarg, swarg)
+else
+    if steamworks == true
+        meson.add_install_script('install.sh', archbits, steam_libpath)
+    else
+        meson.add_install_script('install.sh', archbits)
+    endif
 endif
