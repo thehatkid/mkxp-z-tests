@@ -223,6 +223,13 @@ static bool launchChild(ProcessType *pid) {
   strncpy(buf, execPath().c_str(), sizeof(buf));
   GArgv[0] = buf;
 #else
+  // check for AppImage mount path
+  char *appimageDir = getenv("APPDIR");
+  if (appimageDir) {
+    strcat(appimageDir, "/usr/bin");
+    if (chdir(appimageDir) != 0)
+      dbgpipe("Failed to change CWD to %s\n", appimageDir);
+  }
   GArgv[0] = strdup("./" GAME_LAUNCH_NAME);
 #endif
   dbgpipe("Starting %s\n", GArgv[0]);
@@ -664,16 +671,6 @@ static int mainline(void) {
     return 0;
 #elif defined(MKXPZ_BUILD_XCODE)
     chdir(appResourcePath().c_str());
-#endif
-
-#ifdef __linux__
-  // check for AppImage mount path
-  char *appimageDir = getenv("APPDIR");
-  if (appimageDir) {
-    strcat(appimageDir, "/usr/bin");
-    if (chdir(appimageDir) != 0)
-      dbgpipe("Failed to change CWD to %s\n", appimageDir);
-  }
 #endif
 
   PipeType pipeParentRead = NULLPIPE;
