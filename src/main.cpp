@@ -253,6 +253,10 @@ int main(int argc, char *argv[]) {
     }
 #endif
 
+    // Print welcoming message in console with current mkxp-z build version
+    std::string startText = "Starting mkxp-z version " + std::string(MKXPZ_VERSION) + "/" + std::string(MKXPZ_GIT_HASH);
+    Debug() << startText;
+
 #ifdef MKXPZ_STEAM
     if (!STEAMSHIM_init()) {
       showInitError("Failed to initialize Steamworks. The application cannot "
