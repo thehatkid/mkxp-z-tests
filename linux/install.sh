@@ -27,14 +27,14 @@ cp -pu "$MKXPZ_PREFIX/lib/libruby.so.3.1" "$MESON_INSTALL_PREFIX/lib$BITS/"
 
 # Copy Steamworks SDK SO file
 if [[ -n "$STEAM_PATH" ]]; then
-  echo "Installing libsteam_api.so..."
+  echo "Installing lib$BITS/libsteam_api.so..."
   cp -pu "$STEAM_PATH/libsteam_api.so" "$MESON_INSTALL_PREFIX/lib$BITS/"
 fi
 
 # Copy mkxp-z config file
-if [[ ! -f "$MESON_INSTALL_PREFIX/mkxp-z.json" ]]; then
-  echo "Installing mkxp-z.json..."
-  cp -pu "$MESON_SOURCE_ROOT/mkxp-z.json" "$MESON_INSTALL_PREFIX/"
+if [[ ! -f "$MESON_INSTALL_PREFIX/mkxp.json" ]]; then
+  echo "Installing mkxp.json..."
+  cp -pu "$MESON_SOURCE_ROOT/mkxp.json" "$MESON_INSTALL_PREFIX/"
 fi
 
 # Copy mkxp-z Scripts directory
