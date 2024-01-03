@@ -89,6 +89,13 @@
     // 
     // "smoothScaling": 0,
 
+    // Sharpness when using Bicubic scaling.
+    // A good starting range is 0 to 100, but you may wish to go outside
+    // that range in either direction.
+    // (Default: 100)
+    // 
+    // "bicubicSharpness": 100,
+
     // Replace the game's Bitmap files with external High-Res files provided
     // in the "Hires" directory.
     // (You will also need to set the below Scaling Factors.)
@@ -280,7 +287,7 @@
     // (Default: none)
     // 
     // "preloadScript": [
-    //     "scripts/preload/ruby18_wrap.rb",
+    //     "scripts/preload/ruby_classic_wrap.rb",
     //     "scripts/preload/mkxp_wrap.rb",
     //     "scripts/preload/win32_wrap.rb"
     // ],

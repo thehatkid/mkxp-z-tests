@@ -97,6 +97,7 @@ jobs:
         run: |
           strip -S -x ./mkxp-z.exe
           strip -S -x ./${{ matrix.ruby-prefix }}-ruby310.dll
+          cp -v ${{ github.workspace }}/assets/LICENSE.mkxp-z-with-https.txt .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -158,6 +159,7 @@ jobs:
         run: |
           strip -S -x ./mkxp-z
           strip -S -x ./lib64/libruby.so.3.1
+          cp -v ${{ github.workspace }}/assets/LICENSE.mkxp-z-with-https.txt .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -207,7 +209,9 @@ jobs:
 
       - name: Prepare artifact
         working-directory: ${{ github.workspace }}/build/Build/Products/Release
-        run: ditto -c -k --sequesterRsrc Universal mkxp-z.zip
+        run: |
+          cp -v ${{ github.workspace }}/assets/LICENSE.mkxp-z-with-https.txt Universal/
+          ditto -c -k --sequesterRsrc Universal mkxp-z.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
