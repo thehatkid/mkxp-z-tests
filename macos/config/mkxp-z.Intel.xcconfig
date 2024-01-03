@@ -1,0 +1,11 @@
+// -----------------------------------
+// Do not change any of this below,
+// unless you know what you are doing.
+// -----------------------------------
+
+// Dependency folder definition
+SDK_ROOT = macosx
+BUILD_ARCH = x86_64
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974

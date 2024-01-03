@@ -211,12 +211,12 @@ jobs:
         working-directory: ${{ github.workspace }}/macos
         run: xcodebuild -project mkxp-z.xcodeproj -configuration "Release" -scheme "Universal" -derivedDataPath "$GITHUB_WORKSPACE/build"
 
-      - name: Compress artifact
+      - name: Prepare artifact
         working-directory: ${{ github.workspace }}/build/Build/Products/Release
-        run: ditto -c -k --sequesterRsrc --keepParent Z-universal.app Z-universal.app.zip
+        run: ditto -c -k --sequesterRsrc Universal mkxp-z.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: mkxp-z_macOS_${{ github.event_name == 'pull_request' && format('PR{0}', github.event.number) || github.ref_name }}_${{ steps.shorten-sha.outputs.sha }}
-          path: build/Build/Products/Release/Z-universal.app.zip
+          path: build/Build/Products/Release/mkxp-z.zip

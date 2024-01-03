@@ -7,7 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3BC65D8A2584F3AD0063AFF1"
-               BuildableName = "Z-universal.app"
-               BlueprintName = "Z-universal"
+               BuildableName = "mkxp-z.app"
+               BlueprintName = "mkxp-z (Universal)"
                ReferencedContainer = "container:mkxp-z.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,17 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3BC65D8A2584F3AD0063AFF1"
+            BuildableName = "mkxp-z.app"
+            BlueprintName = "mkxp-z (Universal)"
+            ReferencedContainer = "container:mkxp-z.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -39,14 +50,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "NO">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3BC65D8A2584F3AD0063AFF1"
-            BuildableName = "Z-universal.app"
-            BlueprintName = "Z-universal"
+            BuildableName = "mkxp-z.app"
+            BlueprintName = "mkxp-z (Universal)"
             ReferencedContainer = "container:mkxp-z.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,6 +74,8 @@
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,8 +88,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3BC65D8A2584F3AD0063AFF1"
-            BuildableName = "Z-universal.app"
-            BlueprintName = "Z-universal"
+            BuildableName = "mkxp-z.app"
+            BlueprintName = "mkxp-z (Universal)"
             ReferencedContainer = "container:mkxp-z.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,6 +99,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "mkxp-z (Universal)"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
