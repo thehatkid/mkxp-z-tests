@@ -87,20 +87,16 @@ jobs:
         shell: msys2 {0}
         run: |
           source windows/vars.sh
-          meson setup build
+          meson setup build --prefix="$GITHUB_WORKSPACE/build/artifact"
           meson compile -Cbuild
+          meson install -Cbuild
 
       - name: Prepare artifact
         shell: msys2 {0}
+        working-directory: ${{ github.workspace }}/build/artifact
         run: |
-          mkdir -v build/artifact
-          cp -v build/mkxp-z.exe build/artifact/
-          cp -v windows/build-${{ matrix.sys }}/bin/${{ matrix.ruby-prefix }}-ruby310.dll build/artifact/
-          cp -vr windows/build-${{ matrix.sys }}/lib/ruby/3.1.0 build/artifact/rubylib
-          cp -v mkxp.json build/artifact/
-          cp -vr scripts build/artifact/scripts
-          strip -S -x build/artifact/mkxp-z.exe
-          strip -S -x build/artifact/${{ matrix.ruby-prefix }}-ruby310.dll
+          strip -S -x ./mkxp-z.exe
+          strip -S -x ./${{ matrix.ruby-prefix }}-ruby310.dll
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -125,7 +121,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y wget git vim ruby python3 python3-pip build-essential autoconf automake libtool pkg-config cmake bison libgl1-mesa-dev xorg-dev libxext-dev libasound2-dev libpulse-dev
+          sudo apt install -y wget git vim ruby patchelf python3 python3-pip build-essential autoconf automake libtool pkg-config cmake bison libgl1-mesa-dev xorg-dev libxext-dev libasound2-dev libpulse-dev
           sudo python3 -m pip install meson ninja
 
       - name: Install Autoconf 2.71
@@ -153,17 +149,15 @@ jobs:
       - name: Build mkxp-z
         run: |
           source linux/vars.sh
-          meson build --bindir=. --prefix=$GITHUB_WORKSPACE/build/artifact
+          meson build --prefix="$GITHUB_WORKSPACE/build/artifact"
           meson compile -Cbuild
           meson install -Cbuild
 
       - name: Prepare artifact
+        working-directory: ${{ github.workspace }}/build/artifact
         run: |
-          cp -vr linux/build-x86_64/lib/ruby/3.1.0 build/artifact/rubylib
-          cp -v mkxp.json build/artifact/
-          cp -vr scripts build/artifact/scripts
-          strip -S -x build/artifact/mkxp-z.x86_64
-          strip -S -x build/artifact/lib64/libruby.so.3.1
+          strip -S -x ./mkxp-z
+          strip -S -x ./lib64/libruby.so.3.1
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
