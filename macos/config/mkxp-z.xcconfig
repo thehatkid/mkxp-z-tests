@@ -1,17 +1,15 @@
-// -----------------------------------
-// Do not change any of this below,
-// unless you know what you are doing.
-// -----------------------------------
-
-MKXPZ_EXECUTABLE_NAME = $(PRODUCT_NAME)
-CODE_SIGN_ENTITLEMENTS = $(PROJECT_DIR)/config/mkxp-z.entitlements
+// Executable filename for each mkxp-z targets
+EXECUTABLE_NAME = mkxp-z
+MKXPZ_EXECUTABLE_NAME = mkxp-z
 
 // Ruby version
 MRI_VERSION = 3.1.0
 
 // Dependency folder definition
-DEPENDENCY_SEARCH_PATH = $(PROJECT_DIR)/Dependencies/build-$(SDK_ROOT)-$(BUILD_ARCH)
-EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = $(inherited) Dependencies ../build DerivedData
+DEPENDENCY_PATH = $(PROJECT_DIR)/dependencies/build-$(BUILD_ARCH)
+
+// Exclude some paths from recursive search
+EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = $(inherited) dependencies ../build DerivedData
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974

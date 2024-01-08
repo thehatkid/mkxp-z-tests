@@ -31,9 +31,9 @@ def run_build(arch)
     printf("================================================================================\n")
 
     # Try to create universal libraries with both x86_64 and arm64 arch if possible
-    printf("\n  *  Creating universal libraries ...\n")
+    printf("\n  *  Creating universal libraries...\n")
     ENV['_FROM_SETUP_SH'] = "1"
-    success = system("./make_macuniversal.sh")
+    success = system("ruby ./make_universal.sh")
     printf("\n\e[31m  *  Something went wrong while creating universal libraries...\e[0m\n\n") if !success
     return success
 end
@@ -61,11 +61,12 @@ exitcode = run_build(ARCH) ? 0 : 1
 exit(exitcode) if exitcode != 0
 
 # Fix Steamworks SDK library
-STEAM_LIB = "Frameworks/steam/sdk/redistributable_bin/osx/libsteam_api.dylib"
+STEAM_LIB = "Frameworks/Steamworks/sdk/redistributable_bin/osx/libsteam_api.dylib"
 if File.exist?(STEAM_LIB)
     exitcode = fix_steam(STEAM_LIB)
     exit(exitcode) if exitcode != 0
 end
 
 printf("\n\e[32m  *  All done!\e[0m\n\n")
+
 exit(0)

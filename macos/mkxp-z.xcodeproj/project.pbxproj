@@ -112,7 +112,6 @@
 		3B1C230E25A144BF0075EF5D /* libruby.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1C230D25A144BF0075EF5D /* libruby.3.1.dylib */; };
 		3B1C233025A16CB20075EF5D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE081582568D3A60006849F /* AppKit.framework */; };
 		3B1C233525A17C670075EF5D /* Assets.bundle in Copy Assets Bundle */ = {isa = PBXBuildFile; fileRef = 3BA08EA4256641ED00449CFF /* Assets.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B1C233925A17CB80075EF5D /* Assets.bundle in Copy Assets Bundle */ = {isa = PBXBuildFile; fileRef = 3BA08EA4256641ED00449CFF /* Assets.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B1C236A25A19BB10075EF5D /* steamshim_parent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C236725A19B960075EF5D /* steamshim_parent.cpp */; };
 		3B1C237125A19C600075EF5D /* http-binding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B522DDB259C1E53003301C4 /* http-binding.cpp */; };
 		3B1C237225A19C600075EF5D /* tilemapvx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B10ED7D2568E95D00372D13 /* tilemapvx.cpp */; };
@@ -216,13 +215,12 @@
 		3B1C242025A1A8660075EF5D /* libsteam_api.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1C241125A1A7120075EF5D /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3B1C242625A1A90B0075EF5D /* steamshim in Copy steamshim Executable */ = {isa = PBXBuildFile; fileRef = 3B1C235625A199370075EF5D /* steamshim */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3B1C242B25A1AA1F0075EF5D /* steamshim_child.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B1C236925A19B960075EF5D /* steamshim_child.c */; };
-		3B251DA626DA2CFA00E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		3B251DA826DA2E9000E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		3B251DAC26DA2EC200E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3B251DA626DA2CFA00E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; };
+		3B251DA826DA2E9000E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; };
+		3B251DAC26DA2EC200E5D09B /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; };
 		3B312843259E7DC1002EAB43 /* miniffi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B312842259E7DC1002EAB43 /* miniffi.cpp */; };
 		3B312844259E7DC1002EAB43 /* miniffi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B312842259E7DC1002EAB43 /* miniffi.cpp */; };
 		3B3F7D1D25B19F6E00EA5F1C /* settingsmenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3F7D1725B19DEC00EA5F1C /* settingsmenu.xib */; };
-		3B3F7D2025B19F6E00EA5F1C /* settingsmenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3F7D1725B19DEC00EA5F1C /* settingsmenu.xib */; };
 		3B3F7D2625B19F7000EA5F1C /* settingsmenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3F7D1725B19DEC00EA5F1C /* settingsmenu.xib */; };
 		3B3F7D2A25B1A73A00EA5F1C /* SettingsMenuController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F7D2925B1A73A00EA5F1C /* SettingsMenuController.mm */; };
 		3B3F7D2B25B1A73A00EA5F1C /* SettingsMenuController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F7D2925B1A73A00EA5F1C /* SettingsMenuController.mm */; };
@@ -356,7 +354,7 @@
 		3BBE87FA2705A73400A574AE /* Assets.bundle in Copy Assets Bundle and steam_appid.txt */ = {isa = PBXBuildFile; fileRef = 3BA08EA4256641ED00449CFF /* Assets.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BBE87FB2705A73400A574AE /* steam_appid.txt in Copy Assets Bundle and steam_appid.txt */ = {isa = PBXBuildFile; fileRef = 3B1C243E25A1B8D20075EF5D /* steam_appid.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3BBE87FD2705A73400A574AE /* mkxp.json in Copy mkxp-z Files */ = {isa = PBXBuildFile; fileRef = 3BD2B7282565B35D003DAD8A /* mkxp.json */; };
-		3BBE87FF2705A73400A574AE /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3BBE87FF2705A73400A574AE /* 3.1.0 in Copy Ruby Standard Library Directory */ = {isa = PBXBuildFile; fileRef = 3B251DA526DA2CFA00E5D09B /* 3.1.0 */; };
 		3BBE88012705A73400A574AE /* libfluidsynth.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B522DA1259BAA13003301C4 /* libfluidsynth.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3BBE88022705A73400A574AE /* libEGL.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E1F0925A881FB0086FFDC /* libEGL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3BBE88042705A73400A574AE /* libsteam_api.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1C241125A1A7120075EF5D /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -468,7 +466,6 @@
 		3BD2B6ED2565AEC0003DAD8A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD2B46825651C12003DAD8A /* libiconv.tbd */; };
 		3BD2B6EF2565AEC0003DAD8A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD2B46625651BFC003DAD8A /* CoreFoundation.framework */; };
 		3BD2B6F12565AEC0003DAD8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD2B46725651C00003DAD8A /* Foundation.framework */; };
-		3BD2B6F92565AEC0003DAD8A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3BDB23E22564546E00C4A63D /* icon.icns */; };
 		3BE08104256879FE0006849F /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE080E6256879FC0006849F /* libvorbis.a */; };
 		3BE08105256879FE0006849F /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE080E7256879FC0006849F /* libvorbisfile.a */; };
 		3BE08107256879FE0006849F /* libpixman-1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE080E9256879FC0006849F /* libpixman-1.a */; };
@@ -501,7 +498,6 @@
 		96573E7E27913B46002C3E77 /* TouchBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 96573E7A27913B46002C3E77 /* TouchBar.mm */; };
 		96573E7F27913B46002C3E77 /* TouchBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 96573E7A27913B46002C3E77 /* TouchBar.mm */; };
 		96573E81279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
-		96573E82279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
 		96573E83279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
 		96573E84279152DC002C3E77 /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
 		96D8EDD128728DCE00A331EA /* gamecontrollerdb.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96D8EDD028728DCA00A331EA /* gamecontrollerdb.txt */; };
@@ -510,9 +506,7 @@
 		ADD04C5294116C82CB009D8A /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */; };
 		AE974950A93FC9A717E13D28 /* libbrotlidec-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */; };
 		B419FAA62B45AD3500E3FA12 /* libruby.3.1.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1C230D25A144BF0075EF5D /* libruby.3.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B42540312B44A1F7005C0FE6 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B42540322B44A1F8005C0FE6 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		B42540332B44A1F8005C0FE6 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B42540342B44A1F9005C0FE6 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B4D012172B42B12E002E1A96 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D012162B42B12E002E1A96 /* libz.a */; };
 		B4D012182B42B12E002E1A96 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D012162B42B12E002E1A96 /* libz.a */; };
@@ -530,6 +524,12 @@
 		B4D0122B2B42BE68002E1A96 /* libruby.3.1.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1C230D25A144BF0075EF5D /* libruby.3.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B4D0122C2B42BE6E002E1A96 /* libEGL.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E1F0925A881FB0086FFDC /* libEGL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B4D0122D2B42BE6E002E1A96 /* libGLESv2.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E1F0A25A881FB0086FFDC /* libGLESv2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B4FC1BE62B4B861600ECDEDD /* Assets.bundle in Copy Assets Bundle */ = {isa = PBXBuildFile; fileRef = 3BA08EA4256641ED00449CFF /* Assets.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4FC1BE82B4B867200ECDEDD /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3BDB23E22564546E00C4A63D /* icon.icns */; };
+		B4FC1BE92B4B867B00ECDEDD /* settingsmenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3F7D1725B19DEC00EA5F1C /* settingsmenu.xib */; };
+		B4FC1BEA2B4B868100ECDEDD /* TouchBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96573E80279152DC002C3E77 /* TouchBar.xcassets */; };
+		B4FC1BEB2B4B895900ECDEDD /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B4FC1BEC2B4B895A00ECDEDD /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5204152A08E27D0070038A /* CoreHaptics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B70841599CC887B2CF44195E /* libjxl_dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 672947DA8FC50921A7ED814A /* libjxl_dec.a */; };
 		BB8B436FB4831131BD506069 /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */; };
 		C71F461FBD62A493F478410D /* libbrotlicommon-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */; };
@@ -595,17 +595,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				3B1C233525A17C670075EF5D /* Assets.bundle in Copy Assets Bundle */,
-			);
-			name = "Copy Assets Bundle";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B1C233725A17CAB0075EF5D /* Copy Assets Bundle */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				3B1C233925A17CB80075EF5D /* Assets.bundle in Copy Assets Bundle */,
 			);
 			name = "Copy Assets Bundle";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,15 +726,17 @@
 			dstPath = Shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				3B10ECD62568E83D00372D13 /* common.h in Copy Shaders Files */,
+				3F7F41D98CEDE6F418AAB0D2 /* bicubic.frag in Copy Shaders Files */,
 				3B10ECD22568E83D00372D13 /* bitmapBlit.frag in Copy Shaders Files */,
 				3B10ECD32568E83D00372D13 /* blur.frag in Copy Shaders Files */,
 				3B10ECD42568E83D00372D13 /* blurH.vert in Copy Shaders Files */,
 				3B10ECD52568E83D00372D13 /* blurV.vert in Copy Shaders Files */,
-				3B10ECD62568E83D00372D13 /* common.h in Copy Shaders Files */,
 				3B10ECD72568E83D00372D13 /* flashMap.frag in Copy Shaders Files */,
 				3B10ECD82568E83D00372D13 /* flatColor.frag in Copy Shaders Files */,
 				3B10ECD92568E83D00372D13 /* gray.frag in Copy Shaders Files */,
 				3B10ECDA2568E83D00372D13 /* hue.frag in Copy Shaders Files */,
+				FE52041C2A08E62F0070038A /* lanczos3.frag in Copy Shaders Files */,
 				3B10ECDB2568E83D00372D13 /* minimal.vert in Copy Shaders Files */,
 				3B10ECDC2568E83D00372D13 /* plane.frag in Copy Shaders Files */,
 				3B10ECDD2568E83D00372D13 /* simple.frag in Copy Shaders Files */,
@@ -755,7 +746,6 @@
 				3B10ECE12568E83D00372D13 /* simpleColor.frag in Copy Shaders Files */,
 				3B10ECE22568E83D00372D13 /* simpleColor.vert in Copy Shaders Files */,
 				3B10ECE32568E83D00372D13 /* simpleMatrix.vert in Copy Shaders Files */,
-				FE52041C2A08E62F0070038A /* lanczos3.frag in Copy Shaders Files */,
 				3B10ECE42568E83D00372D13 /* sprite.frag in Copy Shaders Files */,
 				3B10ECE52568E83D00372D13 /* sprite.vert in Copy Shaders Files */,
 				3B10ECE62568E83D00372D13 /* tilemap.frag in Copy Shaders Files */,
@@ -763,7 +753,6 @@
 				3B10ECE82568E83D00372D13 /* tilemapvx.vert in Copy Shaders Files */,
 				3B10ECE92568E83D00372D13 /* trans.frag in Copy Shaders Files */,
 				3B10ECEA2568E83D00372D13 /* transSimple.frag in Copy Shaders Files */,
-				3F7F41D98CEDE6F418AAB0D2 /* bicubic.frag in Copy Shaders Files */,
 			);
 			name = "Copy Shaders Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -850,11 +839,22 @@
 			name = "Copy mkxp-z Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4FC1BE22B4B85E700ECDEDD /* Copy Assets Bundle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				B4FC1BE62B4B861600ECDEDD /* Assets.bundle in Copy Assets Bundle */,
+			);
+			name = "Copy Assets Bundle";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		050F46DEB45795AD16F49F5D /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-macosx-universal/lib/libharfbuzz.a"; sourceTree = "<group>"; };
-		293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-macosx-x86_64/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
+		050F46DEB45795AD16F49F5D /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-universal/lib/libharfbuzz.a"; sourceTree = "<group>"; };
+		293E462B94F6FA33CCB8B20C /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-x86_64/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
 		3B012198261544A0001E574A /* string-util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "string-util.h"; sourceTree = "<group>"; };
 		3B10EC832568E78400372D13 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../assets/icon.png; sourceTree = "<group>"; };
 		3B10EC842568E78400372D13 /* liberation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = liberation.ttf; path = ../assets/liberation.ttf; sourceTree = "<group>"; };
@@ -1015,9 +1015,9 @@
 		3B10EE1F2569348E00372D13 /* json5pp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = json5pp.hpp; sourceTree = "<group>"; };
 		3B1BC0DF266F7C0C00794D22 /* iniconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iniconfig.h; sourceTree = "<group>"; };
 		3B1BC0E0266F7C0C00794D22 /* iniconfig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iniconfig.cpp; sourceTree = "<group>"; };
-		3B1BC0EB266F924B00794D22 /* libuchardet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuchardet.a; path = "Dependencies/build-macosx-x86_64/lib/libuchardet.a"; sourceTree = "<group>"; };
-		3B1C230A25A144A10075EF5D /* libruby.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libruby.3.1.dylib; path = "Dependencies/build-macosx-x86_64/lib/libruby.3.1.dylib"; sourceTree = "<group>"; };
-		3B1C230D25A144BF0075EF5D /* libruby.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libruby.3.1.dylib; path = "Dependencies/build-macosx-universal/lib/libruby.3.1.dylib"; sourceTree = "<group>"; };
+		3B1BC0EB266F924B00794D22 /* libuchardet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuchardet.a; path = "Dependencies/build-x86_64/lib/libuchardet.a"; sourceTree = "<group>"; };
+		3B1C230A25A144A10075EF5D /* libruby.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libruby.3.1.dylib; path = "Dependencies/build-x86_64/lib/libruby.3.1.dylib"; sourceTree = "<group>"; };
+		3B1C230D25A144BF0075EF5D /* libruby.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libruby.3.1.dylib; path = "Dependencies/build-universal/lib/libruby.3.1.dylib"; sourceTree = "<group>"; };
 		3B1C231E25A15FB20075EF5D /* mkxp-z.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "mkxp-z.xcconfig"; path = "config/mkxp-z.xcconfig"; sourceTree = "<group>"; };
 		3B1C231F25A15FB20075EF5D /* mkxp-z.Intel.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "mkxp-z.Intel.xcconfig"; path = "config/mkxp-z.Intel.xcconfig"; sourceTree = "<group>"; };
 		3B1C232025A15FB20075EF5D /* mkxp-z.Universal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "mkxp-z.Universal.xcconfig"; path = "config/mkxp-z.Universal.xcconfig"; sourceTree = "<group>"; };
@@ -1029,9 +1029,9 @@
 		3B1C23FC25A19FB40075EF5D /* steamshim_mac_helpers.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = steamshim_mac_helpers.mm; path = ../steamshim/steamshim_mac_helpers.mm; sourceTree = "<group>"; };
 		3B1C240025A19FD60075EF5D /* steamshim_mac_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = steamshim_mac_helpers.h; path = ../steamshim/steamshim_mac_helpers.h; sourceTree = "<group>"; };
 		3B1C240C25A1A4C50075EF5D /* steamshim.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = steamshim.xcconfig; path = config/steamshim.xcconfig; sourceTree = "<group>"; };
-		3B1C241125A1A7120075EF5D /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = Dependencies/Frameworks/steam/sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
+		3B1C241125A1A7120075EF5D /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = Dependencies/Frameworks/Steamworks/sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		3B1C243E25A1B8D20075EF5D /* steam_appid.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = steam_appid.txt; path = config/steam_appid.txt; sourceTree = "<group>"; };
-		3B251DA526DA2CFA00E5D09B /* 3.1.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 3.1.0; path = "Dependencies/build-macosx-x86_64/lib/ruby/3.1.0"; sourceTree = "<group>"; };
+		3B251DA526DA2CFA00E5D09B /* 3.1.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 3.1.0; path = "Dependencies/build-x86_64/lib/ruby/3.1.0"; sourceTree = "<group>"; };
 		3B312841259E7DC1002EAB43 /* miniffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miniffi.h; sourceTree = "<group>"; };
 		3B312842259E7DC1002EAB43 /* miniffi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = miniffi.cpp; sourceTree = "<group>"; };
 		3B3F7D1725B19DEC00EA5F1C /* settingsmenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = settingsmenu.xib; path = views/settingsmenu.xib; sourceTree = "<group>"; };
@@ -1049,10 +1049,10 @@
 		3B522DB2259BC037003301C4 /* net.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = net.h; sourceTree = "<group>"; };
 		3B522DBD259BD046003301C4 /* httplib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = httplib.h; sourceTree = "<group>"; };
 		3B522DBF259BD072003301C4 /* net.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net.cpp; sourceTree = "<group>"; };
-		3B522DC8259BFEDF003301C4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Dependencies/build-macosx-universal/lib/libcrypto.a"; sourceTree = "<group>"; };
-		3B522DC9259BFEDF003301C4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Dependencies/build-macosx-universal/lib/libssl.a"; sourceTree = "<group>"; };
-		3B522DD4259BFF2D003301C4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Dependencies/build-macosx-x86_64/lib/libssl.a"; sourceTree = "<group>"; };
-		3B522DD5259BFF2D003301C4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Dependencies/build-macosx-x86_64/lib/libcrypto.a"; sourceTree = "<group>"; };
+		3B522DC8259BFEDF003301C4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Dependencies/build-universal/lib/libcrypto.a"; sourceTree = "<group>"; };
+		3B522DC9259BFEDF003301C4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Dependencies/build-universal/lib/libssl.a"; sourceTree = "<group>"; };
+		3B522DD4259BFF2D003301C4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Dependencies/build-x86_64/lib/libssl.a"; sourceTree = "<group>"; };
+		3B522DD5259BFF2D003301C4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Dependencies/build-x86_64/lib/libcrypto.a"; sourceTree = "<group>"; };
 		3B522DDB259C1E53003301C4 /* http-binding.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "http-binding.cpp"; sourceTree = "<group>"; };
 		3B522DE3259C2017003301C4 /* LUrlParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUrlParser.h; sourceTree = "<group>"; };
 		3B522DE4259C2039003301C4 /* LUrlParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LUrlParser.cpp; sourceTree = "<group>"; };
@@ -1061,7 +1061,7 @@
 		3B5A840C2569BE7C00BAF2E5 /* filesystemImplApple.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = filesystemImplApple.mm; sourceTree = "<group>"; };
 		3B5A84132569C28B00BAF2E5 /* filesystemImpl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = filesystemImpl.cpp; sourceTree = "<group>"; };
 		3B5A84142569C28B00BAF2E5 /* filesystemImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filesystemImpl.h; sourceTree = "<group>"; };
-		3B5A8444256A0F6300BAF2E5 /* libopenal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenal.a; path = "Dependencies/build-macosx-x86_64/lib/libopenal.a"; sourceTree = "<group>"; };
+		3B5A8444256A0F6300BAF2E5 /* libopenal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenal.a; path = "Dependencies/build-x86_64/lib/libopenal.a"; sourceTree = "<group>"; };
 		3B5A845C256A465700BAF2E5 /* system.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		3B5A845D256A465700BAF2E5 /* systemImpl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = systemImpl.cpp; sourceTree = "<group>"; };
 		3B5A8463256A46B200BAF2E5 /* systemImplApple.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = systemImplApple.mm; sourceTree = "<group>"; };
@@ -1069,25 +1069,25 @@
 		3B5E1F0A25A881FB0086FFDC /* libGLESv2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLESv2.dylib; path = Dependencies/Frameworks/ANGLE/libGLESv2.dylib; sourceTree = "<group>"; };
 		3B609374268274CE0038E9D6 /* encoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
 		3BA08EA4256641ED00449CFF /* Assets.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BA08EA6256641EE00449CFF /* Assets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Assets.plist; path = misc/Assets.plist; sourceTree = "<group>"; };
+		3BA08EA6256641EE00449CFF /* InfoAssets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = InfoAssets.plist; path = config/InfoAssets.plist; sourceTree = "<group>"; };
 		3BA6944E263DAB53004194EB /* libnsgif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libnsgif.c; sourceTree = "<group>"; };
 		3BA6944F263DAB53004194EB /* lzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzw.c; sourceTree = "<group>"; };
 		3BA69451263DAB53004194EB /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		3BA69452263DAB53004194EB /* lzw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw.h; sourceTree = "<group>"; };
 		3BA69453263DAB53004194EB /* libnsgif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libnsgif.h; sourceTree = "<group>"; };
-		3BAEB1432673DBE700AC177B /* libuchardet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuchardet.a; path = "Dependencies/build-macosx-universal/lib/libuchardet.a"; sourceTree = "<group>"; };
+		3BAEB1432673DBE700AC177B /* libuchardet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuchardet.a; path = "Dependencies/build-universal/lib/libuchardet.a"; sourceTree = "<group>"; };
 		3BBE88092705A73400A574AE /* mkxp-z.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mkxp-z.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC65D7B2584F3780063AFF1 /* libphysfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libphysfs.a; path = "Dependencies/build-macosx-universal/lib/libphysfs.a"; sourceTree = "<group>"; };
-		3BC65D7D2584F3780063AFF1 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Dependencies/build-macosx-universal/lib/libfreetype.a"; sourceTree = "<group>"; };
-		3BC65D812584F3780063AFF1 /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = "Dependencies/build-macosx-universal/lib/libvorbisfile.a"; sourceTree = "<group>"; };
-		3BC65D822584F3780063AFF1 /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = "Dependencies/build-macosx-universal/lib/libogg.a"; sourceTree = "<group>"; };
-		3BC65D832584F3780063AFF1 /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_ttf.a; path = "Dependencies/build-macosx-universal/lib/libSDL2_ttf.a"; sourceTree = "<group>"; };
-		3BC65D842584F3780063AFF1 /* libopenal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenal.a; path = "Dependencies/build-macosx-universal/lib/libopenal.a"; sourceTree = "<group>"; };
-		3BC65D852584F3780063AFF1 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = "Dependencies/build-macosx-universal/lib/libvorbis.a"; sourceTree = "<group>"; };
-		3BC65D862584F3780063AFF1 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "Dependencies/build-macosx-universal/lib/libSDL2.a"; sourceTree = "<group>"; };
-		3BC65D872584F3780063AFF1 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Dependencies/build-macosx-universal/lib/libpng.a"; sourceTree = "<group>"; };
-		3BC65D882584F3780063AFF1 /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "Dependencies/build-macosx-universal/lib/libpixman-1.a"; sourceTree = "<group>"; };
-		3BC65D892584F3910063AFF1 /* libSDL2main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2main.a; path = "Dependencies/build-macosx-universal/lib/libSDL2main.a"; sourceTree = "<group>"; };
+		3BC65D7B2584F3780063AFF1 /* libphysfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libphysfs.a; path = "Dependencies/build-universal/lib/libphysfs.a"; sourceTree = "<group>"; };
+		3BC65D7D2584F3780063AFF1 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Dependencies/build-universal/lib/libfreetype.a"; sourceTree = "<group>"; };
+		3BC65D812584F3780063AFF1 /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = "Dependencies/build-universal/lib/libvorbisfile.a"; sourceTree = "<group>"; };
+		3BC65D822584F3780063AFF1 /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = "Dependencies/build-universal/lib/libogg.a"; sourceTree = "<group>"; };
+		3BC65D832584F3780063AFF1 /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_ttf.a; path = "Dependencies/build-universal/lib/libSDL2_ttf.a"; sourceTree = "<group>"; };
+		3BC65D842584F3780063AFF1 /* libopenal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenal.a; path = "Dependencies/build-universal/lib/libopenal.a"; sourceTree = "<group>"; };
+		3BC65D852584F3780063AFF1 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = "Dependencies/build-universal/lib/libvorbis.a"; sourceTree = "<group>"; };
+		3BC65D862584F3780063AFF1 /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "Dependencies/build-universal/lib/libSDL2.a"; sourceTree = "<group>"; };
+		3BC65D872584F3780063AFF1 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Dependencies/build-universal/lib/libpng.a"; sourceTree = "<group>"; };
+		3BC65D882584F3780063AFF1 /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "Dependencies/build-universal/lib/libpixman-1.a"; sourceTree = "<group>"; };
+		3BC65D892584F3910063AFF1 /* libSDL2main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2main.a; path = "Dependencies/build-universal/lib/libSDL2main.a"; sourceTree = "<group>"; };
 		3BC65E152584F3AD0063AFF1 /* mkxp-z.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mkxp-z.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD2B3AF25651885003DAD8A /* mkxp-z.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "mkxp-z.entitlements"; path = "config/mkxp-z.entitlements"; sourceTree = "<group>"; };
 		3BD2B46625651BFC003DAD8A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -1099,17 +1099,17 @@
 		3BD2B7272565B343003DAD8A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3BD2B7282565B35D003DAD8A /* mkxp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mkxp.json; path = ../mkxp.json; sourceTree = "<group>"; };
 		3BDB23E22564546E00C4A63D /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		3BDB25C52565184600C4A63D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BE080E6256879FC0006849F /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = "Dependencies/build-macosx-x86_64/lib/libvorbis.a"; sourceTree = "<group>"; };
-		3BE080E7256879FC0006849F /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = "Dependencies/build-macosx-x86_64/lib/libvorbisfile.a"; sourceTree = "<group>"; };
-		3BE080E9256879FC0006849F /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "Dependencies/build-macosx-x86_64/lib/libpixman-1.a"; sourceTree = "<group>"; };
-		3BE080EB256879FC0006849F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "Dependencies/build-macosx-x86_64/lib/libSDL2.a"; sourceTree = "<group>"; };
-		3BE080EF256879FD0006849F /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_ttf.a; path = "Dependencies/build-macosx-x86_64/lib/libSDL2_ttf.a"; sourceTree = "<group>"; };
-		3BE080F0256879FD0006849F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_image.a; path = "Dependencies/build-macosx-x86_64/lib/libSDL2_image.a"; sourceTree = "<group>"; };
-		3BE080FC256879FE0006849F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Dependencies/build-macosx-x86_64/lib/libfreetype.a"; sourceTree = "<group>"; };
-		3BE080FD256879FE0006849F /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = "Dependencies/build-macosx-x86_64/lib/libogg.a"; sourceTree = "<group>"; };
-		3BE080FF256879FE0006849F /* libphysfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libphysfs.a; path = "Dependencies/build-macosx-x86_64/lib/libphysfs.a"; sourceTree = "<group>"; };
-		3BE081452568A5C60006849F /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Dependencies/build-macosx-x86_64/lib/libpng.a"; sourceTree = "<group>"; };
+		3BDB25C52565184600C4A63D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = config/Info.plist; sourceTree = "<group>"; };
+		3BE080E6256879FC0006849F /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = "Dependencies/build-x86_64/lib/libvorbis.a"; sourceTree = "<group>"; };
+		3BE080E7256879FC0006849F /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = "Dependencies/build-x86_64/lib/libvorbisfile.a"; sourceTree = "<group>"; };
+		3BE080E9256879FC0006849F /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "Dependencies/build-x86_64/lib/libpixman-1.a"; sourceTree = "<group>"; };
+		3BE080EB256879FC0006849F /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = "Dependencies/build-x86_64/lib/libSDL2.a"; sourceTree = "<group>"; };
+		3BE080EF256879FD0006849F /* libSDL2_ttf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_ttf.a; path = "Dependencies/build-x86_64/lib/libSDL2_ttf.a"; sourceTree = "<group>"; };
+		3BE080F0256879FD0006849F /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_image.a; path = "Dependencies/build-x86_64/lib/libSDL2_image.a"; sourceTree = "<group>"; };
+		3BE080FC256879FE0006849F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Dependencies/build-x86_64/lib/libfreetype.a"; sourceTree = "<group>"; };
+		3BE080FD256879FE0006849F /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = "Dependencies/build-x86_64/lib/libogg.a"; sourceTree = "<group>"; };
+		3BE080FF256879FE0006849F /* libphysfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libphysfs.a; path = "Dependencies/build-x86_64/lib/libphysfs.a"; sourceTree = "<group>"; };
+		3BE081452568A5C60006849F /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Dependencies/build-x86_64/lib/libpng.a"; sourceTree = "<group>"; };
 		3BE081512568D3A60006849F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		3BE081532568D3A60006849F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3BE081542568D3A60006849F /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -1117,18 +1117,18 @@
 		3BE081562568D3A60006849F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3BE081572568D3A60006849F /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
 		3BE081582568D3A60006849F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		3BEA5D7125AC3CE300B6E359 /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_image.a; path = "Dependencies/build-macosx-universal/lib/libSDL2_image.a"; sourceTree = "<group>"; };
-		3BF5B4BC2685881C00A3B240 /* libSDL2_sound.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_sound.a; path = "Dependencies/build-macosx-universal/lib/libSDL2_sound.a"; sourceTree = "<group>"; };
-		3BF5B4BE2685883B00A3B240 /* libSDL2_sound.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_sound.a; path = "Dependencies/build-macosx-x86_64/lib/libSDL2_sound.a"; sourceTree = "<group>"; };
+		3BEA5D7125AC3CE300B6E359 /* libSDL2_image.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_image.a; path = "Dependencies/build-universal/lib/libSDL2_image.a"; sourceTree = "<group>"; };
+		3BF5B4BC2685881C00A3B240 /* libSDL2_sound.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_sound.a; path = "Dependencies/build-universal/lib/libSDL2_sound.a"; sourceTree = "<group>"; };
+		3BF5B4BE2685883B00A3B240 /* libSDL2_sound.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_sound.a; path = "Dependencies/build-x86_64/lib/libSDL2_sound.a"; sourceTree = "<group>"; };
 		3BFABF53267787940024C7DD /* sigslot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sigslot; sourceTree = "<group>"; };
-		3C3D4EBA94DA7A5C543A337E /* libhwy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhwy.a; path = "Dependencies/build-macosx-x86_64/lib/libhwy.a"; sourceTree = "<group>"; };
-		3C4B4BA780D4407F24279700 /* libbrotlidec-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlidec-static.a"; path = "Dependencies/build-macosx-universal/lib/libbrotlidec-static.a"; sourceTree = "<group>"; };
-		57354BACBAB03AB8617C398C /* libjxl_dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjxl_dec.a; path = "Dependencies/build-macosx-x86_64/lib/libjxl_dec.a"; sourceTree = "<group>"; };
-		5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlidec-static.a"; path = "Dependencies/build-macosx-x86_64/lib/libbrotlidec-static.a"; sourceTree = "<group>"; };
-		667B4E3FBC5B03611D5C334E /* libhwy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhwy.a; path = "Dependencies/build-macosx-universal/lib/libhwy.a"; sourceTree = "<group>"; };
-		672947DA8FC50921A7ED814A /* libjxl_dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjxl_dec.a; path = "Dependencies/build-macosx-universal/lib/libjxl_dec.a"; sourceTree = "<group>"; };
-		96563581279A5ABD003D6A75 /* libtheora.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheora.a; path = "Dependencies/build-macosx-x86_64/lib/libtheora.a"; sourceTree = "<group>"; };
-		96563584279A5ADA003D6A75 /* libtheora.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheora.a; path = "Dependencies/build-macosx-universal/lib/libtheora.a"; sourceTree = "<group>"; };
+		3C3D4EBA94DA7A5C543A337E /* libhwy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhwy.a; path = "Dependencies/build-x86_64/lib/libhwy.a"; sourceTree = "<group>"; };
+		3C4B4BA780D4407F24279700 /* libbrotlidec-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlidec-static.a"; path = "Dependencies/build-universal/lib/libbrotlidec-static.a"; sourceTree = "<group>"; };
+		57354BACBAB03AB8617C398C /* libjxl_dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjxl_dec.a; path = "Dependencies/build-x86_64/lib/libjxl_dec.a"; sourceTree = "<group>"; };
+		5C254B088D8B18C7E957DE30 /* libbrotlidec-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlidec-static.a"; path = "Dependencies/build-x86_64/lib/libbrotlidec-static.a"; sourceTree = "<group>"; };
+		667B4E3FBC5B03611D5C334E /* libhwy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhwy.a; path = "Dependencies/build-universal/lib/libhwy.a"; sourceTree = "<group>"; };
+		672947DA8FC50921A7ED814A /* libjxl_dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjxl_dec.a; path = "Dependencies/build-universal/lib/libjxl_dec.a"; sourceTree = "<group>"; };
+		96563581279A5ABD003D6A75 /* libtheora.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheora.a; path = "Dependencies/build-x86_64/lib/libtheora.a"; sourceTree = "<group>"; };
+		96563584279A5ADA003D6A75 /* libtheora.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtheora.a; path = "Dependencies/build-universal/lib/libtheora.a"; sourceTree = "<group>"; };
 		9656358E279A5B74003D6A75 /* theoraplay_cvtrgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = theoraplay_cvtrgb.h; sourceTree = "<group>"; };
 		9656358F279A5B74003D6A75 /* theoraplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = theoraplay.h; sourceTree = "<group>"; };
 		96563592279A5B74003D6A75 /* theoraplay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = theoraplay.c; sourceTree = "<group>"; };
@@ -1136,12 +1136,12 @@
 		96573E7B27913B46002C3E77 /* TouchBar.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = TouchBar.h; path = views/TouchBar.h; sourceTree = "<group>"; };
 		96573E80279152DC002C3E77 /* TouchBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TouchBar.xcassets; path = views/TouchBar.xcassets; sourceTree = "<group>"; };
 		96D8EDD028728DCA00A331EA /* gamecontrollerdb.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = gamecontrollerdb.txt; path = ../assets/gamecontrollerdb.txt; sourceTree = "<group>"; };
-		A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-macosx-universal/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
-		B4D012162B42B12E002E1A96 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = "Dependencies/build-macosx-x86_64/lib/libz.a"; sourceTree = "<group>"; };
-		B4D012192B42B22D002E1A96 /* libSDL2main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2main.a; path = "Dependencies/build-macosx-x86_64/lib/libSDL2main.a"; sourceTree = "<group>"; };
-		B4D0121C2B42B253002E1A96 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = "Dependencies/build-macosx-universal/lib/libz.a"; sourceTree = "<group>"; };
+		A8AA4AE49BB66C97EFAE3055 /* libbrotlicommon-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbrotlicommon-static.a"; path = "Dependencies/build-universal/lib/libbrotlicommon-static.a"; sourceTree = "<group>"; };
+		B4D012162B42B12E002E1A96 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = "Dependencies/build-x86_64/lib/libz.a"; sourceTree = "<group>"; };
+		B4D012192B42B22D002E1A96 /* libSDL2main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2main.a; path = "Dependencies/build-x86_64/lib/libSDL2main.a"; sourceTree = "<group>"; };
+		B4D0121C2B42B253002E1A96 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = "Dependencies/build-universal/lib/libz.a"; sourceTree = "<group>"; };
 		CBEA4C45BE737EE0FF5A8A4C /* bicubic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = bicubic.frag; path = ../shader/bicubic.frag; sourceTree = "<group>"; };
-		F4BC41CF80AE76C3395441FE /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-macosx-x86_64/lib/libharfbuzz.a"; sourceTree = "<group>"; };
+		F4BC41CF80AE76C3395441FE /* libharfbuzz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libharfbuzz.a; path = "Dependencies/build-x86_64/lib/libharfbuzz.a"; sourceTree = "<group>"; };
 		FE5204152A08E27D0070038A /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		FE52041A2A08E58D0070038A /* lanczos3.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = lanczos3.frag; path = ../shader/lanczos3.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1168,7 +1168,7 @@
 				3B1C23D925A19C600075EF5D /* CoreGraphics.framework in Frameworks */,
 				3B1C23D825A19C600075EF5D /* CoreVideo.framework in Frameworks */,
 				3B1C23DC25A19C600075EF5D /* CoreAudio.framework in Frameworks */,
-				B42540332B44A1F8005C0FE6 /* CoreHaptics.framework in Frameworks */,
+				B4FC1BEB2B4B895900ECDEDD /* CoreHaptics.framework in Frameworks */,
 				3B480EA125DCD176001686B4 /* GameController.framework in Frameworks */,
 				3B1C23D725A19C600075EF5D /* ForceFeedback.framework in Frameworks */,
 				3B1C23D625A19C600075EF5D /* Metal.framework in Frameworks */,
@@ -1309,7 +1309,7 @@
 				3B10EC5C2568D40500372D13 /* CoreGraphics.framework in Frameworks */,
 				3B10EC612568D40C00372D13 /* CoreVideo.framework in Frameworks */,
 				3B10EC632568D40C00372D13 /* CoreAudio.framework in Frameworks */,
-				B42540312B44A1F7005C0FE6 /* CoreHaptics.framework in Frameworks */,
+				B4FC1BEC2B4B895A00ECDEDD /* CoreHaptics.framework in Frameworks */,
 				3B480E9F25DCD174001686B4 /* GameController.framework in Frameworks */,
 				3B10EC602568D40C00372D13 /* ForceFeedback.framework in Frameworks */,
 				3B10EC5F2568D40C00372D13 /* Metal.framework in Frameworks */,
@@ -1841,7 +1841,7 @@
 			isa = PBXGroup;
 			children = (
 				3B10EC8B2568E79800372D13 /* Shaders */,
-				3BA08EA6256641EE00449CFF /* Assets.plist */,
+				3BA08EA6256641EE00449CFF /* InfoAssets.plist */,
 				3BDB23E22564546E00C4A63D /* icon.icns */,
 				3B10EC832568E78400372D13 /* icon.png */,
 				96D8EDD028728DCA00A331EA /* gamecontrollerdb.txt */,
@@ -1911,7 +1911,7 @@
 			buildPhases = (
 				3B1C235225A199370075EF5D /* Sources */,
 				3B1C235325A199370075EF5D /* Frameworks */,
-				B4D012202B42B927002E1A96 /* Fix libsteam_api.dylib location */,
+				B4D012202B42B927002E1A96 /* Fix libsteam_api.dylib Location */,
 			);
 			buildRules = (
 			);
@@ -1934,13 +1934,13 @@
 				3B1C23E825A19C600075EF5D /* Copy Assets Bundle and steam_appid.txt */,
 				3B1C23EA25A19C600075EF5D /* Copy mkxp-z Files */,
 				3B251DAB26DA2EBB00E5D09B /* Copy Ruby Standard Library Directory */,
-				FE4F72FE2A179EE0004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */,
+				FE4F72FE2A179EE0004FED68 /* Set MKXPZGitCommitHash value into Info.plist */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3B1C243325A1B1290075EF5D /* PBXTargetDependency */,
 				3B1C236E25A19C600075EF5D /* PBXTargetDependency */,
+				3B1C243325A1B1290075EF5D /* PBXTargetDependency */,
 			);
 			name = "mkxp-z (Intel, Steam)";
 			productName = "mkxp-z";
@@ -1976,7 +1976,7 @@
 				3BBE87F92705A73400A574AE /* Copy Assets Bundle and steam_appid.txt */,
 				3BBE87FC2705A73400A574AE /* Copy mkxp-z Files */,
 				3BBE87FE2705A73400A574AE /* Copy Ruby Standard Library Directory */,
-				FE4F72FD2A179ED5004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */,
+				FE4F72FD2A179ED5004FED68 /* Set MKXPZGitCommitHash value into Info.plist */,
 			);
 			buildRules = (
 			);
@@ -2000,7 +2000,7 @@
 				3B1C233325A17C380075EF5D /* Copy Assets Bundle */,
 				3BC65E0F2584F3AD0063AFF1 /* Copy mkxp-z Files */,
 				3B251D9F26DA2C2A00E5D09B /* Copy Ruby Standard Library Directory */,
-				FE4F72FB2A179D9E004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */,
+				FE4F72FB2A179D9E004FED68 /* Set MKXPZGitCommitHash value into Info.plist */,
 			);
 			buildRules = (
 			);
@@ -2019,11 +2019,11 @@
 				3BD2B64C2565AEC0003DAD8A /* Sources */,
 				3BD2B6E12565AEC0003DAD8A /* Frameworks */,
 				3B522D7C259BA0E8003301C4 /* Embed Frameworks */,
-				3BD2B6F82565AEC0003DAD8A /* Resources */,
-				3B1C233725A17CAB0075EF5D /* Copy Assets Bundle */,
+				B4FC1BE72B4B865D00ECDEDD /* Resources */,
+				B4FC1BE22B4B85E700ECDEDD /* Copy Assets Bundle */,
 				3B5A843B2569F95A00BAF2E5 /* Copy mkxp-z Files */,
 				3B251DA726DA2E8A00E5D09B /* Copy Ruby Standard Library Directory */,
-				FE4F72FC2A179ECC004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */,
+				FE4F72FC2A179ECC004FED68 /* Set MKXPZGitCommitHash value into Info.plist */,
 			);
 			buildRules = (
 			);
@@ -2049,7 +2049,7 @@
 					};
 					3BA08EA3256641ED00449CFF = {
 						CreatedOnToolsVersion = 12.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -2116,20 +2116,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3BD2B6F82565AEC0003DAD8A /* Resources */ = {
+		B4FC1BE72B4B865D00ECDEDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BD2B6F92565AEC0003DAD8A /* icon.icns in Resources */,
-				3B3F7D2025B19F6E00EA5F1C /* settingsmenu.xib in Resources */,
-				96573E82279152DC002C3E77 /* TouchBar.xcassets in Resources */,
+				B4FC1BE82B4B867200ECDEDD /* icon.icns in Resources */,
+				B4FC1BE92B4B867B00ECDEDD /* settingsmenu.xib in Resources */,
+				B4FC1BEA2B4B868100ECDEDD /* TouchBar.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B4D012202B42B927002E1A96 /* Fix libsteam_api.dylib location */ = {
+		B4D012202B42B927002E1A96 /* Fix libsteam_api.dylib Location */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2138,16 +2138,17 @@
 			);
 			inputPaths = (
 			);
-			name = "Fix libsteam_api.dylib location";
+			name = "Fix libsteam_api.dylib Location";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "install_name_tool -change \"@loader_path/libsteam_api.dylib\" \"@rpath/../Frameworks/libsteam_api.dylib\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME\"\n";
+			shellScript = "install_name_tool -change \"@loader_path/libsteam_api.dylib\" \"@executable_path/../Frameworks/libsteam_api.dylib\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME\"\n";
+			showEnvVarsInLog = 0;
 		};
-		FE4F72FB2A179D9E004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */ = {
+		FE4F72FB2A179D9E004FED68 /* Set MKXPZGitCommitHash value into Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2157,16 +2158,16 @@
 			inputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}",
 			);
-			name = "Set GIT_COMMIT_HASH value into Info.plist";
+			name = "Set MKXPZGitCommitHash value into Info.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "COMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT_HASH $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "COMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :MKXPZGitCommitHash $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
 		};
-		FE4F72FC2A179ECC004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */ = {
+		FE4F72FC2A179ECC004FED68 /* Set MKXPZGitCommitHash value into Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2176,16 +2177,16 @@
 			inputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}",
 			);
-			name = "Set GIT_COMMIT_HASH value into Info.plist";
+			name = "Set MKXPZGitCommitHash value into Info.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nCOMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT_HASH $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nCOMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :MKXPZGitCommitHash $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
 		};
-		FE4F72FD2A179ED5004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */ = {
+		FE4F72FD2A179ED5004FED68 /* Set MKXPZGitCommitHash value into Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2195,16 +2196,16 @@
 			inputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}",
 			);
-			name = "Set GIT_COMMIT_HASH value into Info.plist";
+			name = "Set MKXPZGitCommitHash value into Info.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "COMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT_HASH $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "COMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :MKXPZGitCommitHash $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
 		};
-		FE4F72FE2A179EE0004FED68 /* Set GIT_COMMIT_HASH value into Info.plist */ = {
+		FE4F72FE2A179EE0004FED68 /* Set MKXPZGitCommitHash value into Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2214,14 +2215,14 @@
 			inputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}",
 			);
-			name = "Set GIT_COMMIT_HASH value into Info.plist";
+			name = "Set MKXPZGitCommitHash value into Info.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nCOMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT_HASH $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nCOMMIT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :MKXPZGitCommitHash $COMMIT_HASH\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2597,68 +2598,24 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C240C25A1A4C50075EF5D /* steamshim.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/steamshim.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(STEAMSHIM_DEFINES)",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/Frameworks/steam/sdk/public\"";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Dependencies/Frameworks/steam/sdk/redistributable_bin/osx";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies/Frameworks/Steamworks/sdk/public";
+				INFOPLIST_FILE = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies/Frameworks/Steamworks/sdk/redistributable_bin/osx";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)-steamshim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				STEAMSHIM_DEFINES = "\"GAME_LAUNCH_NAME=\\\"$(MKXPZ_EXECUTABLE_NAME)\\\"\" STEAM_APPID=$(STEAM_APP_ID)";
 			};
 			name = Debug;
 		};
@@ -2666,66 +2623,24 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C240C25A1A4C50075EF5D /* steamshim.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/steamshim.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(STEAMSHIM_DEFINES)",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/Frameworks/steam/sdk/public\"";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Dependencies/Frameworks/steam/sdk/redistributable_bin/osx";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies/Frameworks/Steamworks/sdk/public";
+				INFOPLIST_FILE = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies/Frameworks/Steamworks/sdk/redistributable_bin/osx";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)-steamshim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				STEAMSHIM_DEFINES = "\"GAME_LAUNCH_NAME=\\\"$(MKXPZ_EXECUTABLE_NAME)\\\"\" STEAM_APPID=$(STEAM_APP_ID)";
 			};
 			name = Release;
 		};
@@ -2733,73 +2648,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C231F25A15FB20075EF5D /* mkxp-z.Intel.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/IntelSteam";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					MKXPZ_STEAM,
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
 				MKXPZ_EXECUTABLE_NAME = steamshim;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -2808,71 +2665,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C231F25A15FB20075EF5D /* mkxp-z.Intel.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/IntelSteam";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					MKXPZ_STEAM,
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
 				MKXPZ_EXECUTABLE_NAME = steamshim;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -2880,134 +2681,32 @@
 		3BA08EA7256641EE00449CFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = misc/Assets.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.struma.mkxpz-resources";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/config/InfoAssets.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)-resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
 		3BA08EA8256641EE00449CFF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = misc/Assets.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.struma.mkxpz-resources";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/config/InfoAssets.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)-resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -3015,86 +2714,29 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C232025A15FB20075EF5D /* mkxp-z.Universal.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/UniversalSteam";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					MKXPZ_STEAM,
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-universal/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
 				MKXPZ_EXECUTABLE_NAME = steamshim;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -3103,84 +2745,29 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C232025A15FB20075EF5D /* mkxp-z.Universal.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/UniversalSteam";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					MKXPZ_STEAM,
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-universal/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
 				MKXPZ_EXECUTABLE_NAME = steamshim;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -3189,81 +2776,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C232025A15FB20075EF5D /* mkxp-z.Universal.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BUILD_ARCH = universal;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Universal";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-universal/lib",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -3272,79 +2801,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C232025A15FB20075EF5D /* mkxp-z.Universal.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BUILD_ARCH = universal;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Universal";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/arm64-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-universal/lib",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -3353,68 +2826,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C231F25A15FB20075EF5D /* mkxp-z.Intel.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
-				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Intel";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
-				MKXPZ_EXECUTABLE_NAME = "mkxp-z";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -3423,11 +2837,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C231F25A15FB20075EF5D /* mkxp-z.Intel.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Intel";
+				ENABLE_HARDENED_RUNTIME = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		3BDB22F025644FBF00C4A63D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B1C231E25A15FB20075EF5D /* mkxp-z.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3437,7 +2862,6 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -3454,66 +2878,18 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Intel";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 2.4.2;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_HARDENED_RUNTIME = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
-					"$(PROJECT_DIR)/Dependencies/build-macosx-x86_64/lib",
-				);
-				MARKETING_VERSION = 2.4.2;
-				MKXPZ_EXECUTABLE_NAME = "mkxp-z";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
-				PRODUCT_NAME = "$(PRODUCT_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = Release;
-		};
-		3BDB22F025644FBF00C4A63D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B1C231E25A15FB20075EF5D /* mkxp-z.xcconfig */;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					MKXPZ_BUILD_XCODE,
 					"MKXPZ_ALCDEVICE=ALCdevice",
@@ -3528,32 +2904,38 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/$(BUILD_ARCH)-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/$(BUILD_ARCH)-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "$(PROJECT_DIR)/config/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(DEPENDENCY_SEARCH_PATH)/lib",
-					"$(PROJECT_DIR)/Dependencies/Frameworks",
+					"$(PROJECT_DIR)/dependencies/Frameworks",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
+					"$(DEPENDENCY_PATH)/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MKXPZ_EXECUTABLE_NAME = "mkxp-z";
+				MARKETING_VERSION = 2.4.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fdeclspec";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.zoro.mkxp-z";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
 				PRODUCT_NAME = "mkxp-z";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wno-documentation";
@@ -3564,12 +2946,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B1C231E25A15FB20075EF5D /* mkxp-z.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -3577,15 +2967,23 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/config/mkxp-z.entitlements";
 				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.4.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					MKXPZ_BUILD_XCODE,
@@ -3600,35 +2998,41 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../**",
-					"$(DEPENDENCY_SEARCH_PATH)/include",
-					"$(DEPENDENCY_SEARCH_PATH)/lib/**",
-					"$(DEPENDENCY_SEARCH_PATH)/include/SDL2",
-					"$(DEPENDENCY_SEARCH_PATH)/include/pixman-1",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)",
-					"$(DEPENDENCY_SEARCH_PATH)/include/ruby-$(MRI_VERSION)/$(BUILD_ARCH)-darwin",
-					"$(DEPENDENCY_SEARCH_PATH)/include/AL",
-					"$(DEPENDENCY_SEARCH_PATH)/include/openssl",
-					"$(DEPENDENCY_SEARCH_PATH)/include/uchardet",
-					"$(PROJECT_DIR)/Dependencies/Frameworks/ANGLE",
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../binding/**",
+					"$(PROJECT_DIR)/../steamshim",
+					"$(DEPENDENCY_PATH)/include",
+					"$(DEPENDENCY_PATH)/include/SDL2",
+					"$(DEPENDENCY_PATH)/include/AL",
+					"$(DEPENDENCY_PATH)/include/pixman-1",
+					"$(DEPENDENCY_PATH)/include/uchardet",
+					"$(DEPENDENCY_PATH)/include/openssl",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)",
+					"$(DEPENDENCY_PATH)/include/ruby-$(MRI_VERSION)/$(BUILD_ARCH)-darwin",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
 				);
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "$(PROJECT_DIR)/config/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(DEPENDENCY_SEARCH_PATH)/lib",
-					"$(PROJECT_DIR)/Dependencies/Frameworks",
+					"$(PROJECT_DIR)/dependencies/Frameworks",
+					"$(PROJECT_DIR)/dependencies/Frameworks/ANGLE",
+					"$(DEPENDENCY_PATH)/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MKXPZ_EXECUTABLE_NAME = "mkxp-z";
+				MARKETING_VERSION = 2.4.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-fdeclspec",
 					"-O3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.zoro.mkxp-z";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.struma.mkxp-z";
 				PRODUCT_NAME = "mkxp-z";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wno-documentation";

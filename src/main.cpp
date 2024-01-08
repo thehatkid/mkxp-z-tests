@@ -256,8 +256,8 @@ int main(int argc, char *argv[]) {
     // Print welcoming message in console with current mkxp-z build version
     std::string startText;
 #ifdef MKXPZ_BUILD_XCODE
-    if (!getPlistValue("GIT_COMMIT_HASH").empty())
-        startText = "Starting mkxp-z version " + std::string(MKXPZ_VERSION "/" + getPlistValue("GIT_COMMIT_HASH"));
+    if (!getPlistValue("MKXPZGitCommitHash").empty())
+        startText = "Starting mkxp-z version " + std::string(MKXPZ_VERSION "/" + getPlistValue("MKXPZGitCommitHash"));
     else
         startText = "Starting mkxp-z version " + std::string(MKXPZ_VERSION "/" "0000000");
 #else

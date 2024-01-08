@@ -269,7 +269,7 @@ static void mriBindingInit() {
     rb_gv_set("BTEST", rb_bool_new(shState->config().editor.battleTest));
     
 #ifdef MKXPZ_BUILD_XCODE
-    std::string version = std::string(MKXPZ_VERSION "/") + getPlistValue("GIT_COMMIT_HASH");
+    std::string version = std::string(MKXPZ_VERSION "/") + getPlistValue("MKXPZGitCommitHash");
     VALUE vers = rb_utf8_str_new_cstr(version.c_str());
 #else
     VALUE vers = rb_utf8_str_new_cstr(MKXPZ_VERSION "/" MKXPZ_GIT_HASH);

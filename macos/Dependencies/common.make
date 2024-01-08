@@ -23,8 +23,6 @@ SDL_IMAGE_JXL := 1
 DEPLOYMENT_TARGET_FLAGS := -mmacosx-version-min=$(MINIMUM_REQUIRED)
 DEPLOYMENT_TARGET_ENV   := MACOSX_DEPLOYMENT_TARGET="$(MINIMUM_REQUIRED)"
 
-RUBY_ARCH = $(shell $(BINDIR)/ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['arch']")
-
 # Need to specify "--build" argument for Ruby build
 ifeq ($(strip $(shell uname -m)), "arm64")
 	RUBY_BUILD := aarch64-apple-darwin
@@ -33,7 +31,7 @@ else
 endif
 
 # Declare directories
-PREFIX := $(PWD)/build-macosx-$(ARCH)
+PREFIX := $(PWD)/build-$(ARCH)
 DLDIR  := $(PWD)/downloads/$(HOST)
 BINDIR := $(PREFIX)/bin
 LIBDIR := $(PREFIX)/lib

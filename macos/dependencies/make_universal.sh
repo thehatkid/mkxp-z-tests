@@ -1,10 +1,7 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # Dirty script that takes all libraries in the build directories
-# and dumps out fat binaries to use in Xcode project.
-
-# Will probably have to extend it a bit to do iOS if I ever get
-# that working.
+# and dumps out fat (multi-arched) binaries to use in Xcode project.
 
 if not ENV.key?("_FROM_SETUP_SH")
     STDERR.puts("You must run ./setup.sh first.")
@@ -13,10 +10,9 @@ end
 
 require 'FileUtils'
 
-BUILD_ARM = File.join(Dir.pwd, "build-macosx-arm64", "lib")
-BUILD_X86 = File.join(Dir.pwd, "build-macosx-x86_64", "lib")
-
-DESTINATION = File.join(Dir.pwd, "build-macosx-universal", "lib")
+BUILD_ARM = File.join(Dir.pwd, "build-arm64", "lib")
+BUILD_X86 = File.join(Dir.pwd, "build-x86_64", "lib")
+DESTINATION = File.join(Dir.pwd, "build-universal", "lib")
 
 armfiles = Dir[File.join(BUILD_ARM, "*.{a,dylib}")]
 x86files = Dir[File.join(BUILD_X86, "*.{a,dylib}")]

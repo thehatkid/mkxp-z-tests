@@ -185,7 +185,7 @@ jobs:
         run: brew remove --force $(brew list)
 
       - name: Install Homebrew tools
-        working-directory: ${{ github.workspace }}/macos/Dependencies
+        working-directory: ${{ github.workspace }}/macos/dependencies
         run: brew bundle
 
       - name: Dependencies cache
@@ -193,14 +193,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            macos/Dependencies/build-macosx-x86_64
-            macos/Dependencies/build-macosx-arm64
-            macos/Dependencies/build-macosx-universal
+            macos/dependencies/build-x86_64
+            macos/dependencies/build-arm64
+            macos/dependencies/build-universal
           key: macos-${{ hashFiles('macos/Dependencies/*.make', 'macos/Dependencies/*.sh') }}
 
       - name: Build dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        working-directory: ${{ github.workspace }}/macos/Dependencies
+        working-directory: ${{ github.workspace }}/macos/dependencies
         run: ./setup.sh
 
       - name: Build mkxp-z
@@ -210,8 +210,8 @@ jobs:
       - name: Prepare artifact
         working-directory: ${{ github.workspace }}/build/Build/Products/Release
         run: |
-          cp -v ${{ github.workspace }}/assets/LICENSE.mkxp-z-with-https.txt Universal/
-          ditto -c -k --sequesterRsrc Universal mkxp-z.zip
+          cp -v ../../../../assets/LICENSE.mkxp-z-with-https.txt Universal/
+          ditto -Vkc --sequesterRsrc Universal mkxp-z.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
